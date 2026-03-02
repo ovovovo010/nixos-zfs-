@@ -34,7 +34,6 @@
     ./root/zram.nix
     ./root/lact.nix
     ./root/ssh.nix
-    ./root/code-cursor.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

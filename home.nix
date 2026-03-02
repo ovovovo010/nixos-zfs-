@@ -19,6 +19,7 @@
     ./modules/obs.nix
     ./modules/lact.nix
     ./modules/fcitx5.nix
+    ./modules/code-cursor.nix
   ];
 
   home.username = "eric";
