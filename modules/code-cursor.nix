@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     code-cursor
+    # jq 可以留著，但這次用不到
     jq
   ];
 
@@ -18,26 +19,28 @@
     "Cursor/User/keybindings.json".text = builtins.toJSON [];
   };
 
-  # ✅ 修正後的 activation 腳本
+  # ✅ 使用純 shell 陣列，完全避開 jq 和 heredoc
   home.activation.installCursorExtensions = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    echo "Checking for cursor command..."
     if command -v cursor >/dev/null 2>&1; then
       echo "Installing Cursor extensions..."
-
-      # 使用 jq 的 -r 參數輸出純文字，並用 .[] 展開陣列
-      ${pkgs.jq}/bin/jq -r '.[]' <<EOF | while read extension; do
-      [
-        "ms-python.python",
-        "rust-lang.rust-analyzer",
-        "mkhl.direnv",
-        "jnoortheen.nix-ide",
-        "github.copilot",
+      
+      # 直接在 shell 中定義陣列（注意 Nix 字串中的引號跳脫）
+      extensions=(
+        "ms-python.python"
+        "rust-lang.rust-analyzer"
+        "mkhl.direnv"
+        "jnoortheen.nix-ide"
+        "github.copilot"
         "eamodio.gitlens"
-      ]
-      EOF
+      )
+      
+      for extension in "''${extensions[@]}"; do
         echo "  Installing $extension"
+        # 即使某個擴充功能失敗，也繼續安裝其他的
         cursor --install-extension "$extension" --force || echo "  ⚠️  Failed to install $extension (continuing)"
       done
+      
+      echo "✅ Cursor extensions installation completed."
     else
       echo "cursor command not found, skipping extension installation."
     fi
