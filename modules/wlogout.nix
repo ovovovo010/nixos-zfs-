@@ -7,9 +7,9 @@ let
   # 獲取圖標主題路徑（從 Stylix 設定）
   iconTheme = config.stylix.iconTheme;
   
-  # 如果沒有設定圖標主題，提供一個 fallback（理論上你已經設定了）
-  iconPath = if iconTheme?.package != null && iconTheme?.name != null
-    then "${iconTheme.package}/share/icons/${iconTheme.name}"
+  # 用 lib.attrByPath 安全地取值，避免 ?. 語法
+  iconPath = if (lib.hasAttr "package" iconTheme) && (lib.hasAttr "dark" iconTheme)
+    then "${iconTheme.package}/share/icons/${iconTheme.dark}"
     else "${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita";
   
   # 定義按鈕佈局 - **修正為直接列表，不要外層 label**
