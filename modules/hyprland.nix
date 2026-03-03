@@ -136,7 +136,6 @@
         "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
         ", Print, exec, hyprshot -m output --clipboard-only"
         "$mainMod, Print, exec, hyprshot -m region -o ~/Pictures/Screenshots"
-        "$mainMod, N, exec, swaync-client -t"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"

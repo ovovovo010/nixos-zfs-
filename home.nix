@@ -13,13 +13,13 @@
     ./modules/kitty.nix
     ./modules/qt.nix
     ./modules/gtk.nix
-    ./modules/niri.nix
     ./modules/spicetify.nix
     ./modules/eww.nix
     ./modules/obs.nix
     ./modules/lact.nix
     ./modules/fcitx5.nix
     ./modules/code-cursor.nix
+    ./modules/openbox.nix
   ];
 
   home.username = "eric";
