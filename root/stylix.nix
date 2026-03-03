@@ -6,12 +6,10 @@
     enable = true;
     enableReleaseChecks = false;
     
-    # --- 修正重點：改用 Mocha (深色) ---
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    polarity = "dark"; # 這裡一定要改為 dark
+    polarity = "dark";
     
     image = ./wallpaper.png;
-
 
     fonts = {
       monospace = {
@@ -19,11 +17,12 @@
         name = "JetBrainsMono Nerd Font Mono";
       };
     };
-
-   stylix.iconTheme = {
-  enable = true;
-  package = pkgs.catppuccin-icon-theme;  # 或其他
-  name = "Catppuccin-Mocha";
+      # iconTheme 要在 stylix { } 外面，不然會變成 stylix.stylix.iconTheme
+    stylix.iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
     };
   };
 }
