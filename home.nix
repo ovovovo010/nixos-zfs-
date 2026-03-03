@@ -20,6 +20,7 @@
     ./modules/fcitx5.nix
     ./modules/code-cursor.nix
     ./modules/openbox.nix
+    ./modules/wlogout.nix
   ];
 
   home.username = "eric";
