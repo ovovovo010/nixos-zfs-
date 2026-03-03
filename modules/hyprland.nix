@@ -136,7 +136,7 @@
         "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
         ", Print, exec, hyprshot -m output --clipboard-only"
         "$mainMod, Print, exec, hyprshot -m region -o ~/Pictures/Screenshots"
-	"$mainMod, ESCAPE, exec, wlogout"
+	"$mainMod SHIFT, E, exec, wlogout"
 	"$mainMod, L, exec, lock"
 
         "$mainMod, left, movefocus, l"
