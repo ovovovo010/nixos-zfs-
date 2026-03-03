@@ -13,7 +13,7 @@
         "${pkgs.cage}/bin/cage"
         "-s"
         "--"
-        "${pkgs.regreet}/bin/regreet" # ← greetd.regreet 改成 regreet
+        "${pkgs.regreet}/bin/regreet"
       ];
       user = "greeter";
     };
@@ -24,7 +24,7 @@
     settings = {
       GTK = {
         application_prefer_dark_theme = true;
-        font_name = lib.mkForce "JetBrainsMono Nerd Font Mono 11"; # ← 加 mkForce
+        font_name = lib.mkForce "JetBrainsMono Nerd Font Mono 11";
       };
       commands = {
         reboot = ["systemctl" "reboot"];
@@ -39,7 +39,13 @@
   };
   users.groups.greeter = {};
 
-  environment.systemPackages = [pkgs.cage pkgs.regreet];
+  environment.systemPackages = [ pkgs.cage pkgs.regreet ];
+
+  # 讓 regreet 能找到所有 session 的 .desktop 檔
+  environment.pathsToLink = [
+    "/share/xsessions"
+    "/share/wayland-sessions"
+  ];
 
   systemd.services.greetd.serviceConfig = {
     StandardInput = "tty";

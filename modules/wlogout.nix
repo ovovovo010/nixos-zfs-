@@ -1,23 +1,18 @@
 { config, pkgs, lib, ... }:
 
 let
-  # 從 Stylix 獲取顏色變數
   colors = config.lib.stylix.colors.withHashtag;
-  
-  # 獲取圖標主題路徑（從 Stylix 設定）
   iconTheme = config.stylix.iconTheme;
-  
-  # 用 lib.attrByPath 安全地取值，避免 ?. 語法
+
   iconPath = if (lib.hasAttr "package" iconTheme) && (lib.hasAttr "dark" iconTheme)
     then "${iconTheme.package}/share/icons/${iconTheme.dark}"
     else "${pkgs.gnome.adwaita-icon-theme}/share/icons/Adwaita";
-  
-  # 定義按鈕佈局 - **修正為直接列表，不要外層 label**
+
   layout = [
     {
       name = "lock";
       text = "Lock";
-      action = "lock";      # 使用 lock script
+      action = "sh -c 'if command -v hyprlock >/dev/null; then hyprlock; elif command -v swaylock >/dev/null; then swaylock; fi'";
       keybind = "l";
     }
     {
@@ -39,10 +34,8 @@ let
       keybind = "s";
     }
   ];
-  
-  # 建立 CSS 樣式
+
   styleCss = pkgs.writeText "wlogout-style.css" ''
-    /* 從 Stylix 動態生成的顏色變數 */
     @define-color background ${colors.base00};
     @define-color background-alt ${colors.base01};
     @define-color foreground ${colors.base05};
@@ -87,7 +80,6 @@ let
       background-size: 30%;
     }
 
-    /* 使用你的 Catppuccin 圖標主題的圖標 */
     #lock {
       background-image: url("${iconPath}/symbolic/status/lockscreen-symbolic.svg");
     }
@@ -106,13 +98,11 @@ let
   '';
 in
 {
-  # 安裝必要的套件
   home.packages = with pkgs; [
     wlogout
-    librsvg  # 用於載入 SVG 圖標
+    librsvg
   ];
 
-  # lock script（如果還沒裝）
   home.file.".local/bin/lock" = {
     text = ''
       #!/bin/sh
@@ -121,17 +111,16 @@ in
       elif command -v swaylock > /dev/null 2>&1; then
         exec swaylock
       else
-        notify-send "錯誤" "找不到任何鎖定工具 (hyprlock 或 swaylock)"
+        notify-send "錯誤" "找不到任何鎖定工具"
         exit 1
       fi
     '';
     executable = true;
   };
 
-  # 配置 wlogout
   programs.wlogout = {
     enable = true;
-    layout = layout;   # 現在是直接列表，符合類型要求
+    layout = layout;
     style = styleCss;
   };
 }
