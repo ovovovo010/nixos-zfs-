@@ -18,7 +18,7 @@
       };
     };
       # iconTheme 要在 stylix { } 外面，不然會變成 stylix.stylix.iconTheme
-    stylix.iconTheme = {
+    iconTheme = {
       enable = true;
       package = pkgs.papirus-icon-theme;
       dark = "Papirus-Dark";
