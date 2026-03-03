@@ -140,6 +140,4 @@ in
     # 設定樣式檔案
     style = styleCss;
   };
-
-  ];
 }
