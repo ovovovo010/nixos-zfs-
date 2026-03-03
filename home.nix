@@ -21,6 +21,7 @@
     ./modules/code-cursor.nix
     ./modules/openbox.nix
     ./modules/wlogout.nix
+    ./modules/swaylock.nix
   ];
 
   home.username = "eric";

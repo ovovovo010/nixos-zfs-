@@ -13,7 +13,7 @@ let
       {
         name = "lock";
         text = "Lock";
-        action = "hyprlock";
+        action = "swaylock";
         keybind = "l";
       }
       {
