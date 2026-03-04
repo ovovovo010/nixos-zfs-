@@ -24,7 +24,6 @@
         "swww img /etc/nixos/root/wallpaper.png"
 	"mako"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-	"eww open bar"
       ];
 
       # WINDOWRULE 

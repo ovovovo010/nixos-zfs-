@@ -23,6 +23,7 @@
     ./home/swaylock/swaylock.nix
     ./home/yazi/yazi.nix
     ./home/stylix/stylix.nix
+    ./home/waybar/waybar.nix
   ];
 
   home.username = "eric";
