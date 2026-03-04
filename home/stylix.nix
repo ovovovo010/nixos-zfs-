@@ -36,9 +36,9 @@
     };
     
     targets = {
-    qt.enable = true;
-    mako.enable = true;
-    rofi.enable = true;
+    qt.enable = false;
+    mako.enable = false;
+    rofi.enable = false;
     };
   };
 
