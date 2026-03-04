@@ -8,7 +8,7 @@
     
     # 基本行為設定
     extraConfig = {
-      modi = "drun,run,window,ssh";
+      modi = [ "drun" "run" "window" "ssh" ];
       icon-theme = "Papirus-Dark";
       show-icons = true;
       drun-display-format = "{name}";
