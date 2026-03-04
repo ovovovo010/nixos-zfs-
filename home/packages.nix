@@ -101,7 +101,6 @@
     # GTK 主題相關 ⭐ 新增
     gnome-themes-extra
     adwaita-qt
-    libsForQt5.breeze
 
     # 額外工具與 GUI / WM
     lact
