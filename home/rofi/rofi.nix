@@ -51,7 +51,7 @@
         border = mkLiteral "#b4befe";       # Lavender 邊框
         
         # === 字體 ===
-        font = "JetBrains Mono 12";
+        font = mkLiteral "JetBrains Mono 12";
         
         # === 尺寸 ===
         radius = mkLiteral "10px";
@@ -67,6 +67,7 @@
         width = mkLiteral "600px";
         height = mkLiteral "600px";
         padding = mkLiteral "@padding";
+        box-shadow = mkLiteral "0 8px 32px rgba(0, 0, 0, 0.3)";
       };
 
       # === 主容器 ===
@@ -107,7 +108,7 @@
       "listview" = {
         background-color = mkLiteral "@bg-main";
         spacing = mkLiteral "4px";
-        scrollbar = mkLiteral "false";
+        scrollbar = false;
         columns = 1;
         lines = 15;
         padding = mkLiteral "0px 12px";
