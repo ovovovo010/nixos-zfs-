@@ -40,7 +40,7 @@
     deadnix
 
     # 桌面與 Wayland 工具
-    rofi
+    rofi                          # 應用啟動器
     kitty
     waybar
     swww
@@ -49,6 +49,11 @@
     hyprshot
     yazi
     broot
+    
+    # 系統控制工具（用於 eww bar）
+    pamixer                       # 音量控制
+    blueman                       # 藍牙管理 GUI
+    nmtui                         # 網路管理 TUI
     prismlauncher
     bitwarden-desktop
     vesktop

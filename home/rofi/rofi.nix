@@ -1,103 +1,196 @@
 { config, pkgs, lib, ... }: {
-  # 1. 確保 Stylix 不會亂動 Rofi
+  # 確保 Stylix 不會亂動 Rofi
   stylix.targets.rofi.enable = false;
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi; # Wayland 環境必備
+    package = pkgs.rofi;
     
-    # 2. 基本行為設定
+    # 基本行為設定
     extraConfig = {
-      modi = "run,drun,window";
+      modi = "drun,run,window,ssh";
       icon-theme = "Papirus-Dark";
       show-icons = true;
       drun-display-format = "{name}";
+      display-drun = "  Apps";
+      display-run = "  Run";
+      display-window = "  Windows";
+      display-ssh = "  SSH";
+      
+      # 性能優化
+      max-history-size = 25;
+      scroll-method = 0;
+      normalize-match = true;
+      
+      # 定位與大小
       location = 0;
-      disable-history = false;
+      width = 600;
+      height = 600;
+      window-format = "[{w}] {c:20}";
+      
+      # 顯示選項
       hide-scrollbar = true;
-      display-drun = "   Apps ";
-      display-run = "   Run ";
-      sidebar-mode = true;
+      sidebar-mode = false;
+      kb-cancel = "Escape";
     };
 
-    # 3. 大老級主題 (直接用 Nix 寫入 .rasi 內容)
+    # Catppuccin Mocha 主題 - 優化版
     theme = let
-      # 定義 Mocha 顏色變數
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
-        bg-col = mkLiteral "#1e1e2e";
-        bg-col-light = mkLiteral "#1e1e2e";
-        border-col = mkLiteral "#b4befe"; # 又是你最愛的 Lavender
-        selected-col = mkLiteral "#1e1e2e";
-        blue = mkLiteral "#89b4fa";
-        fg-col = mkLiteral "#cdd6f4";
-        fg-col2 = mkLiteral "#f38ba8";
-        grey = mkLiteral "#6c7086";
-        width = 600;
-        font = "JetBrainsMono Nerd Font 11";
+        # === Catppuccin Mocha 配色 ===
+        bg-main = mkLiteral "#1e1e2e";      # 主背景
+        bg-alt = mkLiteral "#313244";       # 替代背景
+        bg-light = mkLiteral "#45475a";     # 亮色背景
+        fg-main = mkLiteral "#cdd6f4";      # 主文本
+        fg-alt = mkLiteral "#a6adc8";       # 替代文本
+        accent-blue = mkLiteral "#89b4fa";  # 藍色強調
+        accent-pink = mkLiteral "#f38ba8";  # 粉紅強調
+        accent-teal = mkLiteral "#94e2d5";  # 青色強調
+        border = mkLiteral "#b4befe";       # Lavender 邊框
+        
+        # === 字體 ===
+        font = "JetBrains Mono 12";
+        
+        # === 尺寸 ===
+        radius = mkLiteral "10px";
+        padding = mkLiteral "8px";
       };
 
-      "element-text, element-icon , mode-switcher" = {
-        background-color = mkLiteral "inherit";
-        text-color = mkLiteral "inherit";
-      };
-
+      # === 窗口樣式 ===
       "window" = {
-        height = mkLiteral "360px";
-        border = mkLiteral "3px";
-        border-color = mkLiteral "@border-col";
-        background-color = mkLiteral "@bg-col";
-        border-radius = mkLiteral "12px"; # 配合你的 Hyprland 圓角
+        border = mkLiteral "2px solid";
+        border-color = mkLiteral "@border";
+        background-color = mkLiteral "@bg-main";
+        border-radius = mkLiteral "@radius";
+        width = mkLiteral "600px";
+        height = mkLiteral "600px";
+        padding = mkLiteral "@padding";
+        box-shadow = mkLiteral "0 8px 32px rgba(0, 0, 0, 0.3)";
       };
 
+      # === 主容器 ===
       "mainbox" = {
-        background-color = mkLiteral "@bg-col";
+        background-color = mkLiteral "@bg-main";
+        spacing = mkLiteral "12px";
+        padding = mkLiteral "0px";
       };
 
+      # === 搜索欄 ===
       "inputbar" = {
-        children = mkLiteral "[prompt,entry]";
-        background-color = mkLiteral "@bg-col";
-        border-radius = mkLiteral "5px";
-        padding = mkLiteral "2px";
+        children = mkLiteral "[prompt, entry]";
+        background-color = mkLiteral "@bg-alt";
+        border = mkLiteral "1px solid";
+        border-color = mkLiteral "@accent-blue";
+        border-radius = mkLiteral "8px";
+        padding = mkLiteral "6px 8px";
+        spacing = mkLiteral "8px";
+        margin = mkLiteral "12px";
       };
 
       "prompt" = {
-        background-color = mkLiteral "@blue";
-        padding = mkLiteral "6px";
-        text-color = mkLiteral "@bg-col";
-        border-radius = mkLiteral "3px";
-        margin = mkLiteral "20px 0px 0px 20px";
+        background-color = mkLiteral "@accent-blue";
+        text-color = mkLiteral "@bg-main";
+        padding = mkLiteral "6px 12px";
+        border-radius = mkLiteral "6px";
+        font = mkLiteral "JetBrains Mono Bold 12";
       };
 
       "entry" = {
-        padding = mkLiteral "6px";
-        margin = mkLiteral "20px 0px 0px 10px";
-        text-color = mkLiteral "@fg-col";
-        background-color = mkLiteral "@bg-col";
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "@fg-main";
+        padding = mkLiteral "6px 0";
+        placeholder-color = mkLiteral "@fg-alt";
       };
 
+      # === 列表視圖 ===
       "listview" = {
-        border = mkLiteral "0px 0px 0px";
-        padding = mkLiteral "6px 0px 0px";
-        margin = mkLiteral "10px 20px 0px 20px";
-        columns = 2;
-        lines = 5;
-        background-color = mkLiteral "@bg-col";
+        background-color = mkLiteral "@bg-main";
+        spacing = mkLiteral "4px";
+        scrollbar = mkLiteral "false";
+        columns = 1;
+        lines = 15;
+        padding = mkLiteral "0px 12px";
       };
 
+      # === 元素基本樣式 ===
       "element" = {
-        padding = mkLiteral "5px";
-        background-color = mkLiteral "@bg-col";
-        text-color = mkLiteral "@fg-col";
+        padding = mkLiteral "8px 12px";
+        background-color = mkLiteral "@bg-alt";
+        text-color = mkLiteral "@fg-alt";
+        border-radius = mkLiteral "6px";
+        transition = mkLiteral "all 150ms ease";
       };
 
+      "element:hover" = {
+        background-color = mkLiteral "@bg-light";
+        text-color = mkLiteral "@accent-teal";
+      };
+
+      # === 選中元素 ===
       "element selected" = {
-        background-color =  mkLiteral "@selected-col";
-        text-color = mkLiteral "@blue";
-        border = mkLiteral "1px";
+        background-color = mkLiteral "@accent-pink";
+        text-color = mkLiteral "@bg-main";
+        border = mkLiteral "2px solid";
+        border-color = mkLiteral "@accent-pink";
         border-radius = mkLiteral "6px";
-        border-color = mkLiteral "@blue";
+        padding = mkLiteral "8px 10px";
+        font = mkLiteral "JetBrains Mono Bold 12";
+      };
+
+      # === 圖標與文本 ===
+      "element-icon" = {
+        size = mkLiteral "32px";
+        margin = mkLiteral "0px 8px 0px 0px";
+      };
+
+      "element-text" = {
+        vertical-align = mkLiteral "0.5";
+        text-color = mkLiteral "inherit";
+      };
+
+      # === 模式切換器 ===
+      "mode-switcher" = {
+        background-color = mkLiteral "@bg-alt";
+        border-radius = mkLiteral "8px";
+        padding = mkLiteral "4px";
+        margin = mkLiteral "0px 12px 12px 12px";
+        spacing = mkLiteral "4px";
+      };
+
+      "button" = {
+        text-color = mkLiteral "@fg-alt";
+        padding = mkLiteral "4px 12px";
+        border-radius = mkLiteral "4px";
+        background-color = mkLiteral "@bg-main";
+        border = mkLiteral "1px solid";
+        border-color = mkLiteral "@bg-light";
+      };
+
+      "button:hover" = {
+        background-color = mkLiteral "@bg-light";
+        text-color = mkLiteral "@accent-blue";
+      };
+
+      "button selected" = {
+        background-color = mkLiteral "@accent-blue";
+        text-color = mkLiteral "@bg-main";
+        border-color = mkLiteral "@accent-blue";
+      };
+
+      # === 消息窗口 ===
+      "message" = {
+        background-color = mkLiteral "@bg-alt";
+        border = mkLiteral "1px solid";
+        border-color = mkLiteral "@accent-blue";
+        border-radius = mkLiteral "6px";
+        padding = mkLiteral "8px 12px";
+        margin = mkLiteral "12px";
+      };
+
+      "textbox" = {
+        text-color = mkLiteral "@fg-main";
       };
     };
   };
