@@ -34,7 +34,6 @@
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.eric      = import ./home.nix;
           home-manager.sharedModules   = [
-            (import ./flake/stylix.nix)
 	    inputs.spicetify-nix.homeManagerModules.default
           ];
         }

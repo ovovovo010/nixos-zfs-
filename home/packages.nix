@@ -93,10 +93,15 @@
     fcitx5-rime
     rime-data
 
-    # Qt / Kvantum 相關
+    # Qt / Kvantum 相關 ⭐ 這裡已經很完整了
     libsForQt5.qtstyleplugin-kvantum
     kdePackages.qtstyleplugin-kvantum
     (catppuccin-kvantum.override { variant = "mocha"; accent = "lavender"; })
+    
+    # GTK 主題相關 ⭐ 新增
+    gnome-themes-extra
+    adwaita-qt
+    libsForQt5.breeze-qt5
 
     # 額外工具與 GUI / WM
     lact
@@ -109,6 +114,56 @@
 
     xwayland-satellite
 
+    # 主題相關 ⭐ 新增
+    papirus-icon-theme           # 圖標主題
+    kvantum                      # Kvantum 主題引擎
+    libsForQt5.qt5ct             # Qt5 配置工具
+    libsForQt5.qtstyleplugins    # Qt5 風格插件
+    
+    # 額外字型 ⭐ 新增
+    noto-fonts                   # Noto 字型家族
+    noto-fonts-emoji             # Noto 表情符號
+    noto-fonts-cjk                # Noto 中日韓字型（你已經有 noto-fonts-cjk-sans/serif）
+    
+    # 開發工具補充 ⭐ 新增
+    nix-prefetch-git              # 預取 Git 倉庫
+    nix-init                      # 互動式建立 Nix 套件
+    nix-update                    # 更新 Nix 套件版本
+    
+    # 系統監控補充 ⭐ 新增
+    btop                          # 你已經有，但保留位置
+    nvtop                         # NVIDIA GPU 監控
+    nvtopPackages.nvtop           # 明確的 nvtop 套件
+    
+    # 編輯器補充 ⭐ 新增
+    neovim                        # 如果你想要 Neovim
+    vim                           # 基本 vim
+    micro                    
+    zed-editor 
+    # 網路工具補充 ⭐ 新增
+    wireshark                     # 網路封包分析
+    nmap                          # 網路掃描
+    
+    # 媒體相關 ⭐ 新增
+    ffmpeg                        # 多媒體處理
+    imagemagick                   # 圖片處理
+    mpv                           # 影片播放器
+    vlc                           # VLC 播放器
+    
+    # 壓縮工具補充 ⭐ 新增
+    p7zip                         # 7zip 支援
+    unrar                         # RAR 解壓縮
+    zip                           # ZIP 壓縮
+    
+    
+    # 虛擬化相關 ⭐ 新增
+    virt-manager                  # 虛擬機管理 GUI
+    virt-viewer                   # SPICE 客戶端
+    quickemu                      # 快速建立虛擬機
+    
+    # AI 開發工具 ⭐ 新增
+    python3Packages.torch         # PyTorch（如果需要）
+    python3Packages.tensorflow    # TensorFlow（如果需要）
+    ollama                        # 本地 LLM 運行
   ];
 }
-

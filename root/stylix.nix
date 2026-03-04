@@ -1,3 +1,4 @@
+# /etc/nixos/root/stylix.nix（系統層，只留必要的最小配置）
 { inputs, pkgs, lib, ... }: {
   imports = [
     inputs.stylix.nixosModules.stylix
@@ -7,32 +8,17 @@
     enable = true;
     enableReleaseChecks = false;
     
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    polarity = "dark";
-    
+    # 系統層只需要指定圖片（因為登入管理器需要）
     image = ./wallpaper.png;
-
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-    };
     
-    # 明确告诉 stylix 不要管理哪些目标
+    # 明確告訴 stylix 不要管理哪些目標（由 home-manager 管理）
     targets = {
-      # 禁用 greetd 管理，因为你已经手动配置了
-      greetd.enable = false;
-      # 禁用 qt 管理，让 home-manager 处理
-      qt.enable = false;
-    };
+    qt.enable = false;
+    mako.enable = false;
+    rofi.enable = false;
+    }
   };
   
-  # iconTheme 要放在 stylix 外面（你的注释是对的）
-  iconTheme = {
-    enable = true;
-    package = pkgs.papirus-icon-theme;
-    dark = "Papirus-Dark";
-    light = "Papirus-Light";
-  };
+  # 確保壁紙能被 greeter 用戶讀取
+  users.users.greeter.extraGroups = [ "users" ];
 }
