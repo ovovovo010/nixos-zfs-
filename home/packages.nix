@@ -129,8 +129,7 @@
     
     # 系統監控補充 ⭐ 新增
     btop                          # 你已經有，但保留位置
-    nvtop                         # NVIDIA GPU 監控
-    nvtopPackages.nvtop           # 明確的 nvtop 套件
+    nvtopPackages.nvidia
     
     # 編輯器補充 ⭐ 新增
     neovim                        # 如果你想要 Neovim
