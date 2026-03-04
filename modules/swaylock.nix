@@ -87,10 +87,10 @@ in
     };
   };
 
-  # 如果你沒有要用 swaylock，就不要安裝它
-  home.packages = with pkgs; [
-    swaylock    # 如果你要 swaylock 就取消註解
-    lockScript   # 這個會裝一個通用的 lock 指令
+  # swaylock 本體由 programs.swaylock.enable 提供
+  # 這裡只安裝自製的 lockScript，其他套件由 modules/packages.nix 安裝
+  home.packages = [
+    lockScript
   ];
 
 }

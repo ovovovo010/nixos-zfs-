@@ -1,47 +1,28 @@
 {pkgs, ...}: {
+  # 所有「只給使用者 eric 用，不需要 system 全域」的套件集中在這裡
   home.packages = with pkgs; [
-    fastfetch # 炫耀系統資訊用
-    btop # 更美觀的資源監控
-    eza # 現代化的 ls 替代品
-    fzf # 模糊搜尋工具
-    ripgrep # 極速文字搜尋 (rg)
-    unzip # 解壓縮工具
-    nil # Nix 語言伺服器 (給 nvim/vscode 用)
-    nixpkgs-fmt # Nix 格式化工具
-    gh # GitHub CLI
-    tree # 顯示目錄樹
-    rofi
-    kitty
-    waybar
-    swww
+    # 基本 CLI / Nix 開發工具
+    fastfetch
+    btop
+    eza
+    fzf
+    ripgrep
+    unzip
+    nil
+    nixpkgs-fmt
+    gh
+    tree
     zig
     bat
     zoxide
-    electron-mail
-    hyprshot
-    wl-clipboard
-    mako
-    gitkraken
+    jq
     tldr
-    prismlauncher
-    atuin
-    carapace
-    broot
-    yazi
-    alejandra
-    nvd
-    nh
-    statix
-    deadnix
-    pavucontrol
-    vesktop
     fd
     dust
     duf
     curlie
     dogdns
     bandwhich
-    jq
     tokei
     nix-output-monitor
     nvd
@@ -54,9 +35,80 @@
     difftastic
     onefetch
     git-graph
-    podman
+    nh
+    statix
+    deadnix
+
+    # 桌面與 Wayland 工具
+    rofi
+    kitty
+    waybar
+    swww
+    wl-clipboard
+    mako
+    hyprshot
+    yazi
+    broot
+    prismlauncher
     bitwarden-desktop
+    vesktop
     goverlay
     qtscrcpy
+
+    # Shell / 歷史相關
+    atuin
+    carapace
+
+    # GUI / 其他 app
+    electron-mail
+    gitkraken
+    pavucontrol
+
+    # Nix / Git 輔助
+    alejandra
+
+    # 容器用戶端（後端在 system）
+    podman
+
+    # 字型（使用者層級）
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.iosevka
+    nerd-fonts.hack
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    source-han-sans
+    source-han-serif
+    sarasa-gothic
+    ibm-plex
+    inter
+    roboto
+    fira-sans
+    cascadia-code
+    comic-neue
+    lexend
+
+    # IME / 輸入法相關
+    fcitx5-rime
+    rime-data
+
+    # Qt / Kvantum 相關
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
+    (catppuccin-kvantum.override { variant = "mocha"; accent = "lavender"; })
+
+    # 額外工具與 GUI / WM
+    lact
+    wlogout
+    librsvg
+    openbox
+    obconf
+
+    # niri 與相關輔助
+    niri
+    xwayland-satellite
+
+    # 開發 / 其他
+    code-cursor
   ];
 }

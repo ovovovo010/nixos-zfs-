@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    fcitx5-rime
-    rime-data
-  ];
-
   xdg.configFile."fcitx5/profile".text = ''
     [Groups/0]
     Name=Default

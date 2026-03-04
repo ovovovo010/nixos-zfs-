@@ -19,12 +19,5 @@
     ];
   };
 
-  programs.gamemode.enable = true; # ← system-level
-
-  environment.systemPackages = with pkgs; [
-    steam-run
-    mangohud
-    gamemode
-    protonup-qt
-  ];
+  programs.gamemode.enable = true; # ← system-level，套件由 root/packages.nix 提供
 }

@@ -124,15 +124,5 @@
     enableNushellIntegration = true;
   };
 
-  # ── 相依套件 ──────────────────────────────────────────
-  home.packages = with pkgs; [
-    zoxide # 智慧跳目錄
-    eza # 現代 ls
-    bat # 現代 cat
-    ripgrep # 現代 grep
-    procs # 現代 ps
-    btop # 現代 top
-    fd # 現代 find
-    fzf # 模糊搜尋
-  ];
+  # 相依套件改由 modules/packages.nix 統一安裝
 }

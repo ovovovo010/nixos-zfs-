@@ -122,14 +122,6 @@
   ### 進階設定             ###
   ###########################
 
-  # 啟用 ZFS 使用者空間工具
-  environment.systemPackages = with pkgs; [
-    zfs          # 主工具
-    zfstools     # 額外腳本（auto-snapshot 等）
-    # sanoid     # 進階快照管理（可替代 autoSnapshot，功能更強）
-    # zrepl      # ZFS 備份/複製工具（可備份到遠端）
-  ];
-
   # 開機時自動匯入 pool（systemd 整合）
   # NixOS 預設已開啟，這裡明確標示
   systemd.services."zfs-import-rpool" = {

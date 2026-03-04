@@ -3,12 +3,6 @@
 {
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [
-    code-cursor
-    # jq 可以留著，但這次用不到
-    jq
-  ];
-
   xdg.configFile = {
     "Cursor/User/settings.json".text = builtins.toJSON {
       editor.fontSize = 14;

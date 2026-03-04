@@ -7,7 +7,5 @@
   # 2. 直接在這裡幫 eric 加群組，不用回主配置改
   users.users.eric.extraGroups = [ "seat" ];
 
-  # 3. 如果你想確保 seatd 相關套件在環境中可用
-  environment.systemPackages = [ pkgs.seatd ];
+  # 3. seatd 套件本身改由 root/packages.nix 提供，這裡只負責服務與群組
 }
-

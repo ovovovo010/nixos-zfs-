@@ -39,7 +39,7 @@
   };
   users.groups.greeter = {};
 
-  environment.systemPackages = [ pkgs.cage pkgs.regreet ];
+  # cage/regreet 已在 root/packages.nix 安裝，這裡只負責服務與 session 設定
 
   # 讓 regreet 能找到所有 session 的 .desktop 檔
   environment.pathsToLink = [

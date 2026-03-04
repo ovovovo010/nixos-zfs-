@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [
-    inputs.zen-browser.packages."${pkgs.system}".default
-  ];
+  # Zen 已透過 Home Manager 的 `modules/zen.nix` 安裝到使用者環境
+  # 不再在 system 層級重複安裝
 }

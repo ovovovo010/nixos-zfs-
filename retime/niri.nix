@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [ pkgs.niri pkgs.xwayland-satellite ];
+  # niri/xwayland-satellite 改由 modules/packages.nix 統一安裝
 
   xdg.configFile."niri/config.kdl".text = ''
     input {

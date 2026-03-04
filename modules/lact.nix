@@ -9,11 +9,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  # 安裝 LACT GUI 到使用者環境
-  home.packages = with pkgs; [
-    lact
-  ];
-
+  # LACT GUI 套件由 modules/packages.nix 安裝，這裡只處理 xdg/autostart
   # 選項：加入桌面捷徑（LACT 套件本身已包含 .desktop 檔）
   # 若你的 HM 有設定 xdg，以下可確保捷徑正常出現
   xdg.enable = true;

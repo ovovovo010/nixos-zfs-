@@ -8,15 +8,6 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  # 安裝 distrobox 和 podman 相關工具
-  environment.systemPackages = with pkgs; [
-    distrobox
-    podman
-    podman-compose
-    podman-tui       # TUI 管理介面
-    dive             # 分析 container image
-  ];
-
   # 讓一般使用者可以用 rootless podman
   security.unprivilegedUsernsClone = true;
 

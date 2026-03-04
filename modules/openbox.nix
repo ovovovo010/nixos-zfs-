@@ -73,14 +73,6 @@ let
   '';
 in
 {
-  # 安裝必要的套件
-  home.packages = with pkgs; [
-    openbox       # 視窗管理器本體
-    obconf        # 圖形化設定工具（選用）
-    rofi          # 應用啟動器（若已全域安裝可刪）
-    kitty         # 終端機（若已全域安裝可刪）
-  ];
-
   # 將設定檔放到 ~/.config/openbox/ 下（openbox-session 會自動讀取）
   home.file.".config/openbox/rc.xml".source = rcXml;
   home.file.".config/openbox/menu.xml".source = menuXml;

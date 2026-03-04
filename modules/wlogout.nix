@@ -98,11 +98,6 @@ let
   '';
 in
 {
-  home.packages = with pkgs; [
-    wlogout
-    librsvg
-  ];
-
   home.file.".local/bin/lock" = {
     text = ''
       #!/bin/sh

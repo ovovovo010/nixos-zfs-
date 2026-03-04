@@ -12,11 +12,6 @@
   };
 
   # --- [6. 顯式安裝工具組] ---
-  environment.systemPackages = with pkgs; [
-    xwayland      # 再次確保 binary 存在
-    xorg.xhost    # 用於處理 X11 權限 (例如讓 root 視窗顯示在 user 桌面)
-    wl-clipboard  # Wayland 剪貼簿
-    xclip         # X11 剪貼簿 (橋接兩者)
-  ];
+  # 相關套件已集中移到 root/packages.nix，這裡只描述啟用狀態
 }
 

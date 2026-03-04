@@ -3,6 +3,5 @@
   users.users.eric = {
     shell = pkgs.nushell;
   };
-
-  environment.systemPackages = [pkgs.nushell];
+  # nushell 套件本身由 root/packages.nix 安裝
 }
