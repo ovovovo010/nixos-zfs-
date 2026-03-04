@@ -11,9 +11,5 @@
   # 讓一般使用者可以用 rootless podman
   security.unprivilegedUsernsClone = true;
 
-  # subuid / subgid（rootless container 必須）
-  users.users.eric = {
-    subUidRanges = [{ startUid = 100000; count = 65536; }];
-    subGidRanges = [{ startGid = 100000; count = 65536; }];
-  };
+  # subuid / subgid 配置已統一在 root/users/users.nix
 }

@@ -32,10 +32,6 @@
     };
   };
 
-  users.users.greeter = {
-    isSystemUser = true;
-    group = "greeter";
-  };
   users.groups.greeter = {};
 
   # cage/regreet 已在 root/packages.nix 安裝，這裡只負責服務與 session 設定
