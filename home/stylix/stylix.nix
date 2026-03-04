@@ -2,40 +2,8 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  imports = [
-    inputs.stylix.homeManagerModules.stylix
-  ];
-
-  # Stylix Home Manager 配置 (由系統層級設定主題，這裡只補充 home-specific 設定)
-  stylix = {
-    enable = true;
-    
-    # 字體配置
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.noto-fonts;
-        name = "Noto Sans";
-      };
-      serif = {
-        package = pkgs.noto-fonts;
-        name = "Noto Serif";
-      };
-      emoji = {
-        package = pkgs.noto-fonts-emoji;
-        name = "Noto Color Emoji";
-      };
-    };
-    
-    targets = {
-      qt.enable = false;
-      mako.enable = false;
-      rofi.enable = false;
-    };
-  };
+  # 注意：系統層級 (root/stylix.nix) 已經設定了 stylix 主題和字體
+  # 這裡只做 home-specific 的配置
 
   # GTK 配置 (包含 icon theme)
   gtk = {
