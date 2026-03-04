@@ -1,30 +1,29 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   services.mako = {
     enable = true;
     
-    # 2026 年新語法：所有視覺設定都要包在 settings 裡
     settings = {
       # --- 1. 核心視覺 ---
-      background-color = "#1e1e2e";
-      text-color = "#cdd6f4";
-      border-color = "#b4befe";
-      progress-color = "over #313244";
+      background-color = lib.mkForce "#1e1e2e";      # 強制使用你的設定
+      text-color = lib.mkForce "#cdd6f4";
+      border-color = lib.mkForce "#b4befe";
+      progress-color = lib.mkForce "over #313244";
       
       # --- 2. 佈局與幾何 ---
-      anchor = "top-right";
-      width = 350;
-      height = 150;
-      margin = "20,20";
-      padding = "15";
-      border-size = 2;
-      border-radius = 10;
+      anchor = lib.mkForce "top-right";
+      width = lib.mkForce 350;
+      height = lib.mkForce 150;
+      margin = lib.mkForce "20,20";
+      padding = lib.mkForce "15";
+      border-size = lib.mkForce 2;
+      border-radius = lib.mkForce 10;
       
       # --- 3. 字體與行為 ---
-      font = "JetBrainsMono Nerd Font 11";
-      default-timeout = 5000;
-      ignore-timeout = false;
-      max-visible = 5;
-      layer = "overlay";
+      font = lib.mkForce "JetBrainsMono Nerd Font 11";
+      default-timeout = lib.mkForce 5000;
+      ignore-timeout = lib.mkForce false;
+      max-visible = lib.mkForce 5;
+      layer = lib.mkForce "overlay";
     };
 
     # 4. 進階互動 (這部分保持不變)
@@ -42,3 +41,4 @@
     '';
   };
 }
+
