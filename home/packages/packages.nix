@@ -69,7 +69,6 @@
     gitkraken
     pavucontrol
     vscode
-    kdenlive
 
     # Nix / Git 輔助
     alejandra
