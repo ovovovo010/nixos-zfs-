@@ -173,7 +173,7 @@
     # Shell
     zsh
     elvish
-    oil
+    oils-for-unix
     hilbish
     xonsh
     rush
