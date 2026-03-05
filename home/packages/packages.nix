@@ -171,14 +171,6 @@
     ollama
 
     # Shell
-    zsh
     elvish
-    oils-for-unix
-    hilbish
-    xonsh
-    rush
-    murex
-    dune
-    lon
   ];
 }
