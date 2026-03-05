@@ -36,10 +36,4 @@
       };
     };
   };
-
-  environment.sessionVariables = {
-    XMODIFIERS = "@im=fcitx5";
-    SDL_IM_MODULE = "fcitx5";
-    GLFW_IM_MODULE = "fcitx5";
-  };
 }
