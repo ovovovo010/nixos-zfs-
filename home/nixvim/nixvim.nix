@@ -92,7 +92,8 @@
           lua_ls.enable  = true;
           nil_ls.enable  = true;
           ts_ls.enable   = true;
-          pyright.enable = true;
+          pyright.enable   = true;
+          ansiblels.enable = false;  # removed from nixpkgs
           rust_analyzer = {
             enable         = true;
             installRustc   = false;
