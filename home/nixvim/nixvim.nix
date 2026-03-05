@@ -50,7 +50,7 @@
       lualine = {
         enable = true;
         settings.options = {
-          theme = "catppuccin";
+          theme = "catppuccin-mocha";
           globalstatus = true;
         };
       };
