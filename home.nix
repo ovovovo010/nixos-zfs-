@@ -28,6 +28,7 @@
     ./home/hyprlock/hyprlock.nix
     ./home/yazi/yazi.nix
     ./home/stylix/stylix.nix
+    ./home/stylix/blacklist.nix
     ./home/waybar/waybar.nix
   ];
 
