@@ -22,18 +22,18 @@
         "fcitx5 -d"
         "swww-daemon"
         "swww img /etc/nixos/root/wallpaper.png"
-	"mako"
+        "mako"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
-	"waybar"
+        "waybar"
       ];
 
-      # WINDOWRULE 
-    windowrulev2 = [
-      "float, class:^(Claude)$"
-      "size 1000 750, class:^(Claude)$"
-      "center, class:^(Claude)$"
-      "rounding 20, class:^(fcitx)$"
-  ];
+      # WINDOWRULE
+      windowrulev2 = [
+        "float, class:^(Claude)$"
+        "size 1000 750, class:^(Claude)$"
+        "center, class:^(Claude)$"
+        "rounding 20, class:^(fcitx)$"
+      ];
 
       # LOOK AND FEEL
       general = {
@@ -50,11 +50,11 @@
       decoration = {
         rounding = 20;
         active_opacity = 0.8;
-        inactive_opacity = 0.68;
+        inactive_opacity = 0.6;
         shadow = {
           enabled = true;
           range = 15;
-          render_power = 3;
+          render_power = 5;
           color = lib.mkForce "rgba(1a1a1aee)";
         };
         blur = {
@@ -136,8 +136,8 @@
         "$mainMod SHIFT, S, exec, hyprshot -m region --clipboard-only"
         ", Print, exec, hyprshot -m output --clipboard-only"
         "$mainMod, Print, exec, hyprshot -m region -o ~/Pictures/Screenshots"
-	"$mainMod SHIFT, E, exec, wlogout"
-	"$mainMod, L, exec, lock"
+        "$mainMod SHIFT, E, exec, wlogout"
+        "$mainMod, L, exec, hyprlock"
 
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
