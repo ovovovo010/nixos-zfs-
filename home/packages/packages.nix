@@ -44,7 +44,6 @@
     deadnix
     zellij
     tealdeer
-    vlides
     jqp
     yq
     w3m
