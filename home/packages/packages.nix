@@ -28,6 +28,10 @@
     nvd
     nix-tree
     nix-du
+    nixpkgs-review
+    nixos-anywhere
+    nixos-generators
+    nix-direnv
     devenv
     comma
     lazygit
@@ -38,6 +42,26 @@
     nh
     statix
     deadnix
+    zellij
+    tealdeer
+    vlides
+    jqp
+    yq
+    w3m
+    lynx
+    bottom
+    lsof
+    socat
+    strace
+    ltrace
+    inotify-tools
+    gdu
+    colordiff
+    meld
+    aria2
+    wget2
+    age
+    zbar
 
     # 桌面與 Wayland 工具
     rofi # 應用啟動器
@@ -59,6 +83,8 @@
     bitwarden-desktop
     vesktop
     goverlay
+    hyperfine
+    flamegraph
 
     # Shell / 歷史相關
     atuin
@@ -125,6 +151,10 @@
     rename
     helix
     imv
+    ttygif
+    chafa
+    progress
+    most
     virtio-win
     win-spice
 
