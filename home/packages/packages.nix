@@ -83,6 +83,7 @@
     goverlay
     hyperfine
     flamegraph
+    nm-connection-editor
 
     # Shell / 歷史相關
     atuin
