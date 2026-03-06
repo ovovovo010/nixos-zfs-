@@ -16,7 +16,6 @@
     bat
     zoxide
     jq
-    tldr
     fd
     dust
     duf
