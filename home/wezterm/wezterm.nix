@@ -116,34 +116,34 @@
       local act = wezterm.action
       config.keys = {
         -- Tab
-        { key = 't',          mods = 'CTRL|SHIFT', action = act.SpawnTab 'CurrentPaneDomain' },
-        { key = 'w',          mods = 'CTRL|SHIFT', action = act.CloseCurrentTab { confirm = false } },
-        { key = 'RightArrow', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(1) },
-        { key = 'LeftArrow',  mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
+        { key = 't';          mods = 'CTRL|SHIFT'; action = act.SpawnTab 'CurrentPaneDomain' },   -- 逗号改分号
+        { key = 'w';          mods = 'CTRL|SHIFT'; action = act.CloseCurrentTab { confirm = false; } }, -- 内部属性集加 ;
+        { key = 'RightArrow'; mods = 'CTRL|SHIFT'; action = act.ActivateTabRelative(1) },
+        { key = 'LeftArrow';  mods = 'CTRL|SHIFT'; action = act.ActivateTabRelative(-1) },
         -- Pane 分割
-        { key = 'd',          mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-        { key = 'e',          mods = 'CTRL|SHIFT', action = act.SplitVertical   { domain = 'CurrentPaneDomain' } },
-        { key = 'h',          mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Left' },
-        { key = 'l',          mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Right' },
-        { key = 'k',          mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Up' },
-        { key = 'j',          mods = 'CTRL|SHIFT', action = act.ActivatePaneDirection 'Down' },
+        { key = 'd';          mods = 'CTRL|SHIFT'; action = act.SplitHorizontal { domain = 'CurrentPaneDomain'; } }, -- 内部加 ;
+        { key = 'e';          mods = 'CTRL|SHIFT'; action = act.SplitVertical   { domain = 'CurrentPaneDomain'; } }, -- 内部加 ;
+        { key = 'h';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Left' },
+        { key = 'l';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Right' },
+        { key = 'k';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Up' },
+        { key = 'j';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Down' },
         -- 字型大小
-        { key = '=',          mods = 'CTRL',       action = act.IncreaseFontSize },
-        { key = '-',          mods = 'CTRL',       action = act.DecreaseFontSize },
-        { key = '0',          mods = 'CTRL',       action = act.ResetFontSize },
+        { key = '=';          mods = 'CTRL';       action = act.IncreaseFontSize },
+        { key = '-';          mods = 'CTRL';       action = act.DecreaseFontSize },
+        { key = '0';          mods = 'CTRL';       action = act.ResetFontSize },
         -- 複製貼上
-        { key = 'c',          mods = 'CTRL|SHIFT', action = act.CopyTo 'Clipboard' },
-        { key = 'v',          mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+        { key = 'c';          mods = 'CTRL|SHIFT'; action = act.CopyTo 'Clipboard' },
+        { key = 'v';          mods = 'CTRL|SHIFT'; action = act.PasteFrom 'Clipboard' },
         -- 搜尋
-        { key = 'f',          mods = 'CTRL|SHIFT', action = act.Search { CaseInSensitiveString = '' } },
+        { key = 'f';          mods = 'CTRL|SHIFT'; action = act.Search { CaseInSensitiveString = ''; } }, -- 内部加 ;
       }
 
       -- ── 滑鼠 ─────────────────────────────────────────────────
       config.mouse_bindings = {
         {
-          event  = { Up = { streak = 1, button = 'Left' } },
-          mods   = 'NONE',
-          action = act.OpenLinkAtMouseCursor,
+          event  = { Up = { streak = 1; button = 'Left'; } }; -- 内部加 ;
+          mods   = 'NONE';
+          action = act.OpenLinkAtMouseCursor;
         },
       }
 
