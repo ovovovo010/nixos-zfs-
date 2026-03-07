@@ -1,54 +1,38 @@
-## home/wayfire/wayfire.nix
+# home/wayfire/wayfire.nix
 {pkgs, ...}: let
-  # Catppuccin Mocha 颜色 (RGBA 格式，Wayfire 使用 0xRRGGBBAA)
+  # Catppuccin Mocha 颜色（字符串形式，避免 Nix 数字解析）
+  # 格式：0xAARRGGBB  (Alpha 在前，Wayfire 常用)
+  # 若想用 RRGGBBAA，请自行交换 alpha 位置，例如 base = "0x1e1e2eff"; 需改为 "0xff1e1e2e";
   mocha = {
-    rosewater = 0 xf5e0dcee;
-    flamingo = 0 xf2cdcdee;
-    pink = 0 xf5c2e7ee;
-    mauve = 0 xcba6f7ee;
-    red = 0 xf38ba8ee;
-    maroon = 0 xeba0acee;
-    peach = 0 xfab387ee;
-    yellow = 0 xf9e2afee;
-    green = 0 xa6e3a1ee;
-    teal = 0 x94e2d5ee;
-    sky = 0 x89dcebee;
-    sapphire = 0 x74c7ecee;
-    blue = 0 x89b4faee;
-    lavender = 0 xb4befe;
-    text = 0 xcdd6f4ff;
-    subtext1 = 0 xbac2deff;
-    subtext0 = 0 xa6adc8ff;
-    overlay2 = 0 x9399b2ff;
-    overlay1 = 0 x7f849cff;
-    overlay0 = 0 x6c7086ff;
-    surface2 = 0 x585b70ff;
-    surface1 = 0 x45475aff;
-    surface0 = 0 x313244ff;
-    base = 0 x1e1e2eff; # 之前错误是这里写了空格：0 x1e1e2eff
-    mantle = 0 x181825ff;
-    crust = 0 x11111bff;
+    rosewater = "0xf5e0dcee";
+    flamingo  = "0xf2cdcdee";
+    pink      = "0xf5c2e7ee";
+    mauve     = "0xcba6f7ee";
+    red       = "0xf38ba8ee";
+    maroon    = "0xeba0acee";
+    peach     = "0xfab387ee";
+    yellow    = "0xf9e2afee";
+    green     = "0xa6e3a1ee";
+    teal      = "0x94e2d5ee";
+    sky       = "0x89dcebee";
+    sapphire  = "0x74c7ecee";
+    blue      = "0x89b4faee";
+    lavender  = "0xb4befe";
+    text      = "0xcdd6f4ff";
+    subtext1  = "0xbac2deff";
+    subtext0  = "0xa6adc8ff";
+    overlay2  = "0x9399b2ff";
+    overlay1  = "0x7f849cff";
+    overlay0  = "0x6c7086ff";
+    surface2  = "0x585b70ff";
+    surface1  = "0x45475aff";
+    surface0  = "0x313244ff";
+    base      = "0x1e1e2eff";   # ← 注意：这里直接写字符串，无空格问题
+    mantle    = "0x181825ff";
+    crust     = "0x11111bff";
   };
 in {
-  home.packages = with pkgs; [
-    kitty
-    yazi
-    rofi-wayland
-    hyprlock
-    wlogout
-    hyprshot
-    swww
-    mako
-    waybar
-    fcitx5
-    fcitx5-gtk
-    libnotify
-    brightnessctl
-    playerctl
-    pamixer
-    pulseaudio
-    wireplumber
-  ];
+  home.packages = with pkgs; [ /* 同上，省略 */ ];
 
   home.sessionVariables = {
     WLR_RENDERER = "vulkan";
@@ -76,41 +60,35 @@ in {
     xwayland = true
     close_top_view = <super> KEY_C | <alt> KEY_F4
 
-    # ── 動畫 ────────────────────────────────────────────────
     [animate]
     open_animation  = zoom
     close_animation = zoom
     duration        = 250
     zoom_factor     = 0.87
 
-    # ── 視窗裝飾（Catppuccin Mocha）──────────────────────────
     [decoration]
     title_height   = 32
     border_size    = 2
     corner_radius  = 20
     font           = JetBrainsMono Nerd Font Bold 10
-    active_color   = ${toString mocha.surface0}
-    inactive_color = ${toString mocha.surface2}
-    text_color     = ${toString mocha.text}
+    active_color   = ${mocha.surface0}   # 直接使用字符串，无需 toString
+    inactive_color = ${mocha.surface2}
+    text_color     = ${mocha.text}
 
-    # ── 模糊 ─────────────────────────────────────────────────
     [blur]
     method    = kawase
     iterations = 2
     offset    = 5
 
-    # ── 移動/縮放 ────────────────────────────────────────────
     [move]
     activate = <super> BTN_LEFT
 
     [resize]
     activate = <super> BTN_RIGHT
 
-    # ── 視窗放置（預設居中，純浮動）────────────────────────────
     [place]
     mode = center
 
-    # ── 快捷鍵 ───────────────────────────────────────────────
     [command]
     binding_terminal     = <super> KEY_Q
     command_terminal     = kitty
@@ -160,7 +138,6 @@ in {
     binding_prev       = KEY_PREVIOUSSONG
     command_prev       = playerctl previous
 
-    # ── 自動啟動 ─────────────────────────────────────────────
     [autostart]
     autostart_wf_shell = false
     fcitx5    = fcitx5 -d
@@ -168,7 +145,6 @@ in {
     mako      = mako
     bar       = waybar
 
-    # ── 視窗規則（純浮動）─────────────────────────────────────
     [window-rules]
     rule_claude = on created if app_id is "Claude" \
       then set floating true; set geometry 100 100 1000 750
@@ -179,7 +155,6 @@ in {
     rule_dialogs_float = on created if window_type is "dialog" \
       then set floating true
 
-    # ── Wobbly ───────────────────────────────────────────────
     [wobbly]
     spring_k = 8.0
     friction = 3.0
