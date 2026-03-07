@@ -1,8 +1,6 @@
 # home/wayfire/wayfire.nix
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    wayfire
-    wcm
   ];
 
   xdg.configFile."wayfire.ini".text = ''
