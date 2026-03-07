@@ -4,7 +4,7 @@
     enable    = true;
     scheduler = "scx_lavd";
     extraArgs = [
-      "--auto-mode"   # 自動在 power save / performance 間切換
+      "--autopower"   # 自動在 power save / performance 間切換
     ];
   };
 }
