@@ -4,16 +4,6 @@
   gtk = {
     enable = true;
 
-    theme = {
-      name    = lib.mkForce "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
-
-    iconTheme = {
-      name    = lib.mkForce "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
       gtk-xft-antialias = 1;
