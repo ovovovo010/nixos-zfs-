@@ -189,8 +189,6 @@
       alias v    = nvim
       alias vi   = nvim
       alias vim  = nvim
-      alias z    = zoxide
-      alias cd   = zoxide
       alias sw   = nh os switch /home/eric/nixos-config
       alias up   = nix flake update /home/eric/nixos-config
       alias nr   = nix repl "<nixpkgs>"
