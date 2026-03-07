@@ -116,13 +116,13 @@
       local act = wezterm.action
       config.keys = {
         -- Tab
-        { key = 't';          mods = 'CTRL|SHIFT'; action = act.SpawnTab 'CurrentPaneDomain' },   -- 逗号改分号
-        { key = 'w';          mods = 'CTRL|SHIFT'; action = act.CloseCurrentTab { confirm = false; } }, -- 内部属性集加 ;
+        { key = 't';          mods = 'CTRL|SHIFT'; action = act.SpawnTab 'CurrentPaneDomain' },
+        { key = 'w';          mods = 'CTRL|SHIFT'; action = act.CloseCurrentTab { confirm = false } },
         { key = 'RightArrow'; mods = 'CTRL|SHIFT'; action = act.ActivateTabRelative(1) },
         { key = 'LeftArrow';  mods = 'CTRL|SHIFT'; action = act.ActivateTabRelative(-1) },
         -- Pane 分割
-        { key = 'd';          mods = 'CTRL|SHIFT'; action = act.SplitHorizontal { domain = 'CurrentPaneDomain'; } }, -- 内部加 ;
-        { key = 'e';          mods = 'CTRL|SHIFT'; action = act.SplitVertical   { domain = 'CurrentPaneDomain'; } }, -- 内部加 ;
+        { key = 'd';          mods = 'CTRL|SHIFT'; action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+        { key = 'e';          mods = 'CTRL|SHIFT'; action = act.SplitVertical   { domain = 'CurrentPaneDomain' } },
         { key = 'h';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Left' },
         { key = 'l';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Right' },
         { key = 'k';          mods = 'CTRL|SHIFT'; action = act.ActivatePaneDirection 'Up' },
@@ -135,13 +135,13 @@
         { key = 'c';          mods = 'CTRL|SHIFT'; action = act.CopyTo 'Clipboard' },
         { key = 'v';          mods = 'CTRL|SHIFT'; action = act.PasteFrom 'Clipboard' },
         -- 搜尋
-        { key = 'f';          mods = 'CTRL|SHIFT'; action = act.Search { CaseInSensitiveString = ''; } }, -- 内部加 ;
+        { key = 'f';          mods = 'CTRL|SHIFT'; action = act.Search { CaseInSensitiveString = ''''; } },  -- 修正：四个单引号
       }
 
       -- ── 滑鼠 ─────────────────────────────────────────────────
       config.mouse_bindings = {
         {
-          event  = { Up = { streak = 1; button = 'Left'; } }; -- 内部加 ;
+          event  = { Up = { streak = 1; button = 'Left' } };
           mods   = 'NONE';
           action = act.OpenLinkAtMouseCursor;
         },
