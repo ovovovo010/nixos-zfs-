@@ -135,7 +135,7 @@
         { key = 'c';          mods = 'CTRL|SHIFT'; action = act.CopyTo 'Clipboard' },
         { key = 'v';          mods = 'CTRL|SHIFT'; action = act.PasteFrom 'Clipboard' },
         -- 搜尋
-        { key = 'f';          mods = 'CTRL|SHIFT'; action = act.Search { CaseInSensitiveString = ''''; } },  -- 修正：四个单引号
+        { key = 'f';          mods = 'CTRL|SHIFT'; action = act.Search { CaseInSensitiveString = ""; } },
       }
 
       -- ── 滑鼠 ─────────────────────────────────────────────────
