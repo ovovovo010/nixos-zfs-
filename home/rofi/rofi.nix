@@ -1,14 +1,19 @@
-{ config, pkgs, lib, ... }: {
-  # 確保 Stylix 不會亂動 Rofi
-  stylix.targets.rofi.enable = false;
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  xdg.configFile."xdg-terminals.list".text = ''
+    kitty.desktop
+  '';
   programs.rofi = {
     enable = true;
     package = pkgs.rofi;
-    
+
     # 基本行為設定
     extraConfig = {
-      modi = [ "drun" "run" "window" "ssh" ];
+      modi = ["drun" "run" "window" "ssh"];
       icon-theme = "Papirus-Dark";
       show-icons = true;
       drun-display-format = "{name}";
@@ -16,18 +21,18 @@
       display-run = "  Run";
       display-window = "  Windows";
       display-ssh = "  SSH";
-      
+
       # 性能優化
       max-history-size = 25;
       scroll-method = 0;
       normalize-match = true;
-      
+
       # 定位與大小
       location = 0;
       width = 600;
       height = 600;
       window-format = "[{w}] {c:20}";
-      
+
       # 顯示選項
       hide-scrollbar = true;
       sidebar-mode = false;
@@ -40,16 +45,16 @@
     in {
       "*" = {
         # === Catppuccin Mocha 配色 ===
-        bg-main = mkLiteral "#1e1e2e";      # 主背景
-        bg-alt = mkLiteral "#313244";       # 替代背景
-        bg-light = mkLiteral "#45475a";     # 亮色背景
-        fg-main = mkLiteral "#cdd6f4";      # 主文本
-        fg-alt = mkLiteral "#a6adc8";       # 替代文本
-        accent-blue = mkLiteral "#89b4fa";  # 藍色強調
-        accent-pink = mkLiteral "#f38ba8";  # 粉紅強調
-        accent-teal = mkLiteral "#94e2d5";  # 青色強調
-        border = mkLiteral "#b4befe";       # Lavender 邊框
-        
+        bg-main = mkLiteral "#1e1e2e"; # 主背景
+        bg-alt = mkLiteral "#313244"; # 替代背景
+        bg-light = mkLiteral "#45475a"; # 亮色背景
+        fg-main = mkLiteral "#cdd6f4"; # 主文本
+        fg-alt = mkLiteral "#a6adc8"; # 替代文本
+        accent-blue = mkLiteral "#89b4fa"; # 藍色強調
+        accent-pink = mkLiteral "#f38ba8"; # 粉紅強調
+        accent-teal = mkLiteral "#94e2d5"; # 青色強調
+        border = mkLiteral "#b4befe"; # Lavender 邊框
+
         # === 尺寸 ===
         radius = mkLiteral "10px";
         padding = mkLiteral "8px";
