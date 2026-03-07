@@ -39,6 +39,7 @@
     ./root/fish/fish.nix
     ./root/zsh/zsh.nix
     ./root/sched_ext/sched_ext.nix
+    ./root/pipewire/pipewire.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

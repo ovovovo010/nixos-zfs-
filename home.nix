@@ -18,6 +18,7 @@
     ./home/nixvim/nixvim.nix
     ./home/cursor/cursor.nix
     ./home/kitty/kitty.nix
+    ./home/wezterm/wezterm.nix
     ./home/qt/qt.nix
     ./home/gtk/gtk.nix
     ./home/spicetify/spicetify.nix
