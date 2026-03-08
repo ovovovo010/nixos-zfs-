@@ -1,4 +1,4 @@
-{ config, pkgs, lib, iconDest, ... }:
+{ config, pkgs, lib, iconPath, ... }:
 {
   mainBar = {
     layer = "top";
@@ -12,7 +12,7 @@
     spacing = 8;
 
     "modules-left" = [ "hyprland/workspaces" "custom/launcher" ];
-    "modules-center" = [ "clock" "custom/notification" ];
+    "modules-center" = [ "clock" ];
     "modules-right" = [
       "privacy"
       "idle_inhibitor"
@@ -159,7 +159,7 @@
     };
 
     "custom/launcher" = {
-      format = "<img src='${iconDest}' height='16'/>";
+      format = "<img src='${iconPath}' height='16'/>";
       on-click = "rofi -show drun";
       tooltip = false;
     };
@@ -204,27 +204,6 @@
       "tooltip-format" = "{title}";
       "on-click" = "activate";
       "on-click-middle" = "close";
-    };
-
-    "custom/notification" = {
-      tooltip = false;
-      format = "{icon}";
-      "format-icons" = {
-        notification = "\uF0A2<span foreground='#b7bdf8'><sup>\uF444</sup></span>";
-        none = "\uF0A2 ";
-        "dnd-notification" = "\uF1F7<span foreground='red'><sup>\uF444</sup></span>";
-        "dnd-none" = "\uF1F7 ";
-        "inhibited-notification" = "\uF0A2<span foreground='red'><sup>\uF444></sup></span>";
-        "inhibited-none" = "\uF0A2 ";
-        "dnd-inhibited-notification" = "\uF1F7<span foreground='red'><sup>\uF444</sup></span>";
-        "dnd-inhibited-none" = "\uF1F7 ";
-      };
-      "return-type" = "json";
-      "exec-if" = "which swaync-client";
-      exec = "swaync-client -swb";
-      "on-click" = "swaync-client -t -sw";
-      "on-click-right" = "swaync-client -d -sw";
-      escape = true;
     };
 
     privacy = {

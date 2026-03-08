@@ -1,13 +1,12 @@
 { pkgs, config, lib, ... }:
 let
-  # copy the nixos icon from the library into the user's waybar config
-  iconSource = ../library/nixos-wallpaper-catppuccin-macchiato.png;
-  iconDest = "${config.home.homeDirectory}/.config/waybar/nixos.png";
+  # nixos icon is stored locally in this directory
+  iconPath = "${config.home.homeDirectory}/.config/waybar/nixos.png";
 in
 {
-  # exporting a file ensures the icon ends up in ~/.config/waybar
+  # copy the nixos icon into ~/.config/waybar
   home.file."waybar/nixos.png" = {
-    source = iconSource;
+    source = ./nixos.png;
   };
 
   programs.waybar = {
@@ -15,7 +14,7 @@ in
     package = pkgs.waybar;
 
     # import the big JSON-derived settings from a separate nix file
-    settings = import ./waybar-settings.nix { inherit config pkgs lib iconDest; };
+    settings = import ./waybar-settings.nix { inherit config pkgs lib iconPath; };
 
     style = ''
       /* keep the nice catppuccin theme from before */
