@@ -1,6 +1,9 @@
-{ pkgs, lib, config, ... }:
-
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   gtk = {
     enable = true;
 
@@ -24,7 +27,7 @@
       "text/x-c++" = "nvim.desktop";
       "text/x-python" = "nvim.desktop";
       "text/x-nix" = "nvim.desktop";
-      
+
       # 瀏覽器
       "text/html" = "firefox.desktop";
       "application/xhtml+xml" = "firefox.desktop";
@@ -35,8 +38,8 @@
 
   stylix.targets.gtk.extraCss = ''
     /* GTK3 & GTK4 統一圓角修正 */
-    window, 
-    .main-window, 
+    window,
+    .main-window,
     .background,
     window.csd,
     window.solid-csd {
@@ -44,22 +47,14 @@
       overflow: hidden;
     }
 
-    .titlebar, 
+    .titlebar,
     headerbar {
       border-radius: 20px 20px 0 0;
     }
 
-    menu, 
+    menu,
     .popover {
       border-radius: 12px;
     }
   '';
-
-  home.pointerCursor = lib.mkForce {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
-  };
 }
