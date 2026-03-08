@@ -86,7 +86,7 @@
     hyperfine
     flamegraph
     networkmanagerapplet
-    gparted
+    partitionmanager
 
     # Shell / 歷史相關
     atuin
