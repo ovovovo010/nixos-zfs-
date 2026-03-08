@@ -72,7 +72,6 @@
     yazi
     nnn
     broot
-    luaPackages.lgi
 
     # 系統控制工具
     pamixer # 音量控制
@@ -86,6 +85,7 @@
     flamegraph
     networkmanagerapplet
     parted
+    ags
 
     # Shell / 歷史相關
     atuin
