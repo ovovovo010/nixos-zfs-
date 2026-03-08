@@ -72,8 +72,6 @@
     yazi
     nnn
     broot
-    wayfire
-    wayfirePlugins.wcm
 
     # 系統控制工具（用於 eww bar）
     pamixer # 音量控制
@@ -86,7 +84,6 @@
     hyperfine
     flamegraph
     networkmanagerapplet
-    gnome-disk-utility
 
     # Shell / 歷史相關
     atuin
