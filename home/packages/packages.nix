@@ -72,6 +72,7 @@
     yazi
     nnn
     broot
+    luaPackages.bling
 
     # 系統控制工具
     pamixer # 音量控制
@@ -155,6 +156,16 @@
     most
 
     xwayland-satellite
+
+    # X11 / awesome 相關
+    xorg.xinit
+    xorg.xrandr
+    xorg.xsetroot
+    scrot
+    feh
+    picom
+    dunst
+    xclip
 
     # 主題相關 ⭐ 新增
     papirus-icon-theme # 圖標主題
