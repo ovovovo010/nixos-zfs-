@@ -1,9 +1,21 @@
 # home/awesome/awesome.nix
-{ ... }: {
+{ pkgs, ... }:
+let
+  bling-src = pkgs.fetchFromGitHub {
+    owner  = "blingcorp";
+    repo   = "bling";
+    rev    = "master";
+    sha256 = "sha256-wlkMjNLloJfJkNpbL5K/3bYoZQmNRUKxQSdJXS6FQzw=";
+  };
+in
+{
   # 套件統一在 packages.nix 管理
 
   # rc.lua 主設定
   xdg.configFile."awesome/rc.lua".source = ./rc.lua;
+
+  # bling 套件（nixpkgs 沒有，從 GitHub 抓）
+  xdg.configFile."awesome/bling".source = bling-src;
 
   # picom compositor
   xdg.configFile."picom/picom.conf".text = ''

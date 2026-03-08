@@ -72,7 +72,6 @@
     yazi
     nnn
     broot
-    luaPackages.bling
 
     # 系統控制工具
     pamixer # 音量控制
