@@ -12,22 +12,22 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
-        margin-top = 4;
-        margin-left = 4;
-        margin-right = 4;
-        margin-bottom = 1;
-        spacing = 8;
+        height = 40;
+        margin-top = 8;
+        margin-left = 0;
+        margin-right = 0;
+        margin-bottom = 0;
+        spacing = 12;
 
-        "modules-left" = [ "custom/launcher" "hyprland/workspaces" "mpris" ];
+        "modules-left" = [ "custom/launcher" "hyprland/workspaces" ];
         "modules-center" = [ "clock" ];
         "modules-right" = [
           "privacy"
           "idle_inhibitor"
-          "custom/clipboard"
           "pulseaudio"
           "backlight"
           "battery"
+          "network"
           "tray"
           "custom/power"
         ];
@@ -206,19 +206,19 @@
         };
 
         "custom/launcher" = {
-          format = "";
+          format = "󱄅";
           "on-click" = "rofi -show drun";
           "tooltip-format" = "Launcher";
         };
 
         "custom/clipboard" = {
-          format = "";
+          format = "󱌢";
           "on-click" = "rofi -show clipboard";
           "tooltip-format" = "Clipboard";
         };
 
         "custom/power" = {
-          format = "";
+          format = "⏻";
           tooltip = false;
           "on-click" = "wlogout -c 15 -b 6 -m 400";
         };
@@ -314,16 +314,14 @@
     style = ''
       * {
           font-family: "JetBrainsMono Nerd Font";
-          font-size: 14px;
+          font-size: 16px;
           color: #b4befe;
       }
 
       window#waybar {
           background-color: #1e1e2e;
-          background-color: transparent;
           color: #cdd6f4;
-          transition-property: background-color;
-          transition-duration: 0.5s;
+          border: none;
       }
 
       window#waybar.hidden {
@@ -332,8 +330,8 @@
 
       #workspaces {
           background-color: #1e1e2e;
-          border-radius: 15px;
-          padding: 0 10px 0 5px;
+          border-radius: 0px;
+          padding: 0 15px 0 15px;
       }
 
       window#waybar.termite {
@@ -399,15 +397,15 @@
       #scratchpad,
       #mpd {
           background-color: #1e1e2e;
-          border-radius: 15px;
-          padding: 0 10px 0 10px;
+          border-radius: 0px;
+          padding: 0 12px 0 12px;
       }
 
       #custom-vkeyboard {
-          margin: 4px 0px 4px 0px;
+          margin: 0px 0px 0px 0px;
           background-color: #1e1e2e;
-          border-radius: 15px;
-          padding: 0 10px 0 12px;
+          border-radius: 0px;
+          padding: 0 12px 0 12px;
       }
 
       .modules-left>widget:first-child>#workspaces {
@@ -525,21 +523,24 @@
 
       #custom-power {
           background-color: #1e1e2e;
-          border-radius: 15px;
-          padding: 0 15px 0 12px;
+          border-radius: 0px;
+          padding: 0 15px 0 15px;
+          font-size: 18px;
       }
 
       #custom-clipboard {
           font-family: "Font Awesome 6 Free";
           background-color: #1e1e2e;
-          border-radius: 15px;
-          padding: 0 10px 0 10px;
+          border-radius: 0px;
+          padding: 0 12px 0 12px;
+          font-size: 18px;
       }
 
       #custom-launcher {
           background-color: #1e1e2e;
-          border-radius: 15px;
-          padding: 0 8px 0 11px;
+          border-radius: 0px;
+          padding: 0 12px 0 12px;
+          font-size: 18px;
       }
 
       #custom-media {
