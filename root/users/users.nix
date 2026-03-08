@@ -30,11 +30,5 @@
     packages = with pkgs; [];
   };
 
-  # greeter 使用者 (for greetd)
-  users.users.greeter = {
-    isSystemUser = true;
-    group = "greeter";
-  };
-
-  users.groups.greeter = {};
+  
 }
