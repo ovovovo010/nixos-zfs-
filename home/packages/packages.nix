@@ -86,7 +86,7 @@
     hyperfine
     flamegraph
     networkmanagerapplet
-    kdePackages.partitionmanager
+    gnome-disk-utility
 
     # Shell / 歷史相關
     atuin
