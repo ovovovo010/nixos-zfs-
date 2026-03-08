@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  # 确保主题文件可访问
+  environment.pathsToLink = ["/share/fcitx5"];
+
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -9,7 +12,11 @@
       fcitx5-table-extra
       fcitx5-chewing
       fcitx5-lua
-      catppuccin-fcitx5
+      (catppuccin-fcitx5.override {
+        # 显式指定 flavor
+        flavor = "mocha";
+        accent = "lavender";
+      })
       fcitx5-rime
       rime-data
     ];
@@ -27,8 +34,13 @@
           "PreferTextIcon" = "False";
           "ShowLayoutNameInIcon" = "True";
           "UseInputMethodLanguageToDisplayText" = "True";
-          "Theme" = "Catppuccin-Mocha-Lavender";
-          "DarkTheme" = "Catppuccin-Mocha-Lavender";
+
+          # 修正主题名称 - 先试试这个
+          "Theme" = "catppuccin-mocha-lavender"; # 全小写
+          # 如果上面的不行，试试这个：
+          # "Theme" = "Catppuccin-Mocha";
+
+          "DarkTheme" = "catppuccin-mocha-lavender";
           "UseDarkTheme" = "False";
           "FollowSystemDarkMode" = "False";
           "UseAccentColor" = "True";

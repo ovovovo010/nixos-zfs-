@@ -15,7 +15,6 @@
     ./home/mako/mako.nix
     ./home/zen/zen.nix
     ./home/nixvim/nixvim.nix
-    ./home/cursor/cursor.nix
     ./home/kitty/kitty.nix
     ./home/wezterm/wezterm.nix
     ./home/qt/qt.nix
@@ -23,7 +22,6 @@
     ./home/spicetify/spicetify.nix
     ./home/obs/obs.nix
     ./home/lact/lact.nix
-    ./home/fcitx5/fcitx5.nix
     ./home/wlogout/wlogout.nix
     ./home/hyprlock/hyprlock.nix
     ./home/yazi/yazi.nix
