@@ -5,7 +5,7 @@ let
     owner  = "blingcorp";
     repo   = "bling";
     rev    = "master";
-    sha256 = "sha256-wlkMjNLloJfJkNpbL5K/3bYoZQmNRUKxQSdJXS6FQzw=";
+    sha256 = "sha256-rhhUsXQ3awjFiEHEG0axilSCWS6pR+w74K/pIfEUc5w=";
   };
 in
 {
