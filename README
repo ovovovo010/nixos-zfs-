@@ -1,0 +1,312 @@
+# Eric's NixOS Configuration
+
+這是一個基於 NixOS 25.11 的個人配置倉庫，使用 Flake 管理系統和 Home Manager 配置。專為 ZFS 檔案系統優化，包含完整的桌面環境設定。
+
+## 📁 目錄結構
+
+```
+.
+├── configuration.nix          # NixOS 系統配置主檔案
+├── hardware-configuration.nix # 硬體配置（自動生成）
+├── home.nix                   # Home Manager 主配置（用戶 eric）
+├── flake.nix                  # Flake 定義
+├── system/                    # 系統級模組（原 root/）
+│   ├── audio/                 # 音訊設定
+│   ├── boot/                  # 開機設定
+│   ├── desktop/               # 桌面環境
+│   ├── driver/                # 驅動程式
+│   ├── fcitx5/                # 輸入法
+│   ├── flatpak/               # Flatpak 支援
+│   ├── greetd/                # 登入管理器
+│   ├── lact/                  # AMD GPU 工具
+│   ├── libvirtd/              # 虛擬化
+│   ├── locale/                # 地區設定
+│   ├── mirror/                # 鏡像源
+│   ├── networking/            # 網路設定
+│   ├── nushell/               # Nushell 設定
+│   ├── obs/                   # OBS Studio
+│   ├── packages/              # 系統套件
+│   ├── pipewire/              # 音訊伺服器
+│   ├── polkit/                # 權限管理
+│   ├── sched_ext/             # 排程器擴展
+│   ├── sddm/                  # 顯示管理器
+│   ├── seatd/                 # Seat 管理
+│   ├── ssh/                   # SSH 設定
+│   ├── steam/                 # Steam 支援
+│   ├── stylix/                # 主題設定
+│   ├── systemd/               # 系統服務
+│   ├── thunar/                # 檔案管理器
+│   ├── users/                 # 用戶設定
+│   ├── wayland/               # Wayland 支援
+│   ├── zen/                   # Zen Browser
+│   ├── zfs/                   # ZFS 檔案系統
+│   └── zram/                  # ZRAM 交換空間
+├── home/                      # Home Manager 模組
+│   ├── fonts/                 # 字型設定
+│   ├── gtk/                   # GTK 主題
+│   ├── hyprland/              # Hyprland WM
+│   ├── hyprlock/              # 螢幕鎖定
+│   ├── kitty/                 # 終端機
+│   ├── lact/                  # AMD GPU
+│   ├── mako/                  # 通知
+│   ├── nixvim/                # Neovim 配置
+│   ├── nushell/               # Nushell
+│   ├── obs/                   # OBS Studio
+│   ├── packages/              # 用戶套件
+│   ├── qt/                    # Qt 主題
+│   ├── rofi/                  # 應用啟動器
+│   ├── spicetify/             # Spotify 主題
+│   ├── steam/                 # Steam
+│   ├── stylix/                # 主題
+│   ├── waybar/                # 狀態列
+│   ├── wezterm/               # 終端機
+│   ├── wlogout/               # 登出選單
+│   ├── yazi/                  # 檔案管理器
+│   └── zen/                   # Zen Browser
+├── user/                      # 用戶特定配置
+│   └── user1/                 # user1 的 Home Manager
+├── library/                   # 資源檔案
+│   ├── rickinshah/            # Waybar 參考配置
+│   └── nixos-wallpaper-catppuccin-macchiato.png  # 桌布
+└── README.md                  # 本檔案
+```
+
+## 🗂️ 包含的軟體和功能
+
+### 系統級
+- **桌面環境**: Hyprland (Wayland WM) + Waybar + Mako + Wlogout
+- **音訊**: Pipewire + WirePlumber
+- **輸入法**: Fcitx5 + Rime
+- **主題**: Stylix + Catppuccin 配色
+- **瀏覽器**: Zen Browser + Floorp
+- **編輯器**: Neovim (NixVim) + VS Code
+- **終端機**: Kitty + WezTerm
+- **檔案管理器**: Thunar + Yazi
+- **音樂**: Spotify (Spicetify)
+- **虛擬化**: Libvirt + Distrobox
+- **遊戲**: Steam + Proton + Lutris
+
+### ZFS 支援
+- 完整的 ZFS-on-root 設定
+- 自動快照 (zfs-auto-snapshot)
+- ARC 記憶體限制 (12GB)
+- 定期 scrub
+- Dataset 結構優化
+
+## 🚀 安裝和開新機
+
+### 準備工作
+
+1. **下載 NixOS 安裝映像**:
+   ```bash
+   # 下載最新 stable 版本
+   wget https://channels.nixos.org/nixos-25.11/latest-nixos-minimal-x86_64-linux.iso
+   ```
+
+2. **建立安裝媒體**:
+   ```bash
+   # 假設 USB 裝置為 /dev/sdb
+   sudo dd if=nixos-25.11-minimal-x86_64-linux.iso of=/dev/sdb bs=4M status=progress
+   ```
+
+3. **開機進入安裝環境**:
+   - 從 USB 開機
+   - 設定網路: `sudo systemctl start wpa_supplicant` 或使用 `nmtui`
+
+### ZFS 磁碟分割和格式化
+
+1. **識別磁碟**:
+   ```bash
+   lsblk
+   # 假設目標磁碟為 /dev/nvme0n1
+   ```
+
+2. **建立 ZFS Pool**:
+   ```bash
+   # 清除現有分割表
+   sudo wipefs -a /dev/nvme0n1
+
+   # 建立 GPT 分割表
+   sudo parted /dev/nvme0n1 -- mklabel gpt
+
+   # 建立 EFI 分割區 (512MB)
+   sudo parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
+   sudo parted /dev/nvme0n1 -- set 1 esp on
+
+   # 建立 ZFS 分割區 (剩餘空間)
+   sudo parted /dev/nvme0n1 -- mkpart primary 512MB 100%
+
+   # 格式化 EFI 分割區
+   sudo mkfs.fat -F 32 /dev/nvme0n1p1
+
+   # 建立 ZFS Pool
+   sudo zpool create -f -o ashift=12 -o autotrim=on \
+     -O acltype=posixacl -O canmount=off -O compression=zstd \
+     -O dnodesize=auto -O normalization=formD -O relatime=on \
+     -O xattr=sa -O mountpoint=none \
+     rpool /dev/nvme0n1p2
+
+   # 建立 Datasets
+   sudo zfs create -o canmount=off -o mountpoint=none rpool/ROOT
+   sudo zfs create -o canmount=noauto -o mountpoint=/ rpool/ROOT/nixos
+   sudo zfs create -o mountpoint=/nix rpool/nix
+   sudo zfs create -o mountpoint=/home rpool/home
+   sudo zfs create -o mountpoint=/var rpool/var
+   sudo zfs create -o mountpoint=/var/lib rpool/var/lib
+   sudo zfs create -o mountpoint=/var/log rpool/var/log
+
+   # 設定開機屬性
+   sudo zfs set com.sun:auto-snapshot=true rpool/home
+   sudo zfs set com.sun:auto-snapshot=true rpool/var
+   sudo zfs set com.sun:auto-snapshot=false rpool/nix
+   sudo zfs set com.sun:auto-snapshot=false rpool/ROOT/nixos
+   ```
+
+3. **掛載檔案系統**:
+   ```bash
+   # 掛載根檔案系統
+   sudo zfs mount rpool/ROOT/nixos
+
+   # 掛載 EFI 分割區
+   sudo mkdir -p /mnt/boot
+   sudo mount /dev/nvme0n1p1 /mnt/boot
+
+   # 掛載其他目錄
+   sudo mount -t zfs rpool/nix /mnt/nix
+   sudo mount -t zfs rpool/home /mnt/home
+   sudo mount -t zfs rpool/var /mnt/var
+   sudo mount -t zfs rpool/var/lib /mnt/var/lib
+   sudo mount -t zfs rpool/var/log /mnt/var/log
+   ```
+
+### 安裝 NixOS
+
+1. **產生硬體配置**:
+   ```bash
+   sudo nixos-generate-config --root /mnt
+   ```
+
+2. **複製配置**:
+   ```bash
+   # 複製這個倉庫到新系統
+   sudo git clone https://github.com/yourusername/nixos-config /mnt/etc/nixos
+
+   # 或從本地複製
+   sudo cp -r /path/to/this/repo /mnt/etc/nixos
+   ```
+
+3. **編輯配置**:
+   - 修改 `/mnt/etc/nixos/hardware-configuration.nix` 中的 ZFS 設定
+   - 調整 `/mnt/etc/nixos/configuration.nix` 中的網路、用戶等設定
+
+4. **安裝系統**:
+   ```bash
+   sudo nixos-install
+   ```
+
+5. **重開機**:
+   ```bash
+   sudo reboot
+   ```
+
+### 後續設定
+
+1. **登入並更新**:
+   ```bash
+   # 進入新系統後
+   sudo nixos-rebuild switch
+   ```
+
+2. **設定 Home Manager**:
+   ```bash
+   # 如果使用 nh
+   nh home switch
+
+   # 或使用標準 home-manager
+   home-manager switch
+   ```
+
+3. **ZFS 維護**:
+   ```bash
+   # 檢查 pool 狀態
+   sudo zpool status
+
+   # 手動 scrub
+   sudo zpool scrub rpool
+
+   # 檢查快照
+   sudo zfs list -t snapshot
+   ```
+
+## 🛠️ 使用說明
+
+### 日常更新
+
+```bash
+# 更新系統
+nh os switch
+
+# 更新 Home Manager
+nh home switch
+
+# 更新 Flake inputs
+nix flake update
+```
+
+### 備份和恢復
+
+```bash
+# 建立快照
+sudo zfs snapshot -r rpool@backup-$(date +%Y%m%d)
+
+# 列出快照
+sudo zfs list -t snapshot
+
+# 從快照恢復
+sudo zfs rollback rpool/ROOT/nixos@backup-20240101
+```
+
+### 故障排除
+
+- **ZFS Pool 無法匯入**: 檢查 `boot.zfs.forceImportRoot` 設定
+- **ARC 記憶體過高**: 調整 `zfs_arc_max` 參數
+- **開機問題**: 檢查 EFI 分割區和 ZFS 掛載點
+
+## 📋 注意事項
+
+- 此配置針對個人使用，可能需要根據你的硬體調整
+- ZFS 需要現代 CPU 支援，舊機器可能不適合
+- 記得定期備份重要資料
+- 修改 ZFS 設定前請先了解風險
+
+## 🤝 貢獻
+
+歡迎提交 Issue 和 Pull Request！請確保：
+
+- 遵循現有程式碼風格
+- 測試變更不會破壞現有功能
+- 更新相關文檔
+
+## 📄 授權
+
+MIT License
+
+Copyright (c) 2026 Eric
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
