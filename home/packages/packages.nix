@@ -97,6 +97,7 @@
     gitkraken
     pavucontrol
     vscode
+    freetube
 
     # Nix / Git 輔助
     alejandra
