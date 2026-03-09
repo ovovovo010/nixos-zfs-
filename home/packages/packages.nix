@@ -163,7 +163,6 @@
     xorg.xsetroot
     scrot
     feh
-    picom
     dunst
     xclip
 
@@ -201,8 +200,6 @@
     quickemu # 快速建立虛擬機
 
     # AI 開發工具 ⭐ 新增
-    python3Packages.torch # PyTorch（如果需要）
-    python3Packages.tensorflow # TensorFlow（如果需要）
     ollama
   ];
 }
