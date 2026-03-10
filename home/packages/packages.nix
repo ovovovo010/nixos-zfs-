@@ -97,7 +97,7 @@
     gitkraken
     pavucontrol
     vscode
-    gtk-pipe-viewer
+    freetube
 
     # Nix / Git 輔助
     alejandra
