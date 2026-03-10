@@ -190,7 +190,6 @@
     # 媒體相關 ⭐ 新增
     ffmpeg # 多媒體處理
     imagemagick # 圖片處理
-    mpv # 影片播放器
     vlc # VLC 播放器
 
     # 壓縮工具補充 ⭐ 新增
