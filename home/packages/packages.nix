@@ -98,7 +98,7 @@
     pavucontrol
     vscode
     freetube
-    strawberry
+    lollypop
 
     # Nix / Git 輔助
     alejandra
