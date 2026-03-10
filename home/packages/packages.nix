@@ -97,7 +97,7 @@
     gitkraken
     pavucontrol
     vscode
-    picky
+    pipe-viewer
 
     # Nix / Git 輔助
     alejandra
