@@ -25,15 +25,10 @@
         "mako"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
         "waybar"
-        "electronmail"
       ];
 
       # WINDOWRULE
       windowrulev2 = [
-        "float, class:^(Claude)$"
-        "size 1000 750, class:^(Claude)$"
-        "center, class:^(Claude)$"
-        "rounding 20, class:^(fcitx)$"
       ];
 
       # LOOK AND FEEL
