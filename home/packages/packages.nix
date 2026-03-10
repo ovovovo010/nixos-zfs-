@@ -160,15 +160,6 @@
 
     xwayland-satellite
 
-    # X11 / awesome 相關
-    xorg.xinit
-    xorg.xrandr
-    xorg.xsetroot
-    scrot
-    feh
-    dunst
-    xclip
-
     # 主題相關 ⭐ 新增
     papirus-icon-theme # 圖標主題
     libsForQt5.qt5ct # Qt5 配置工具
@@ -191,7 +182,6 @@
     # 媒體相關 ⭐ 新增
     ffmpeg # 多媒體處理
     imagemagick # 圖片處理
-    vlc # VLC 播放器
 
     # 壓縮工具補充 ⭐ 新增
     p7zip # 7zip 支援
