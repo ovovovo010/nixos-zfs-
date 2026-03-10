@@ -98,6 +98,7 @@
     pavucontrol
     vscode
     freetube
+    strawberry
 
     # Nix / Git 輔助
     alejandra
