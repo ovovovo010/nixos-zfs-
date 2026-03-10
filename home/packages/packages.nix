@@ -73,7 +73,6 @@
     yazi
     nnn
     broot
-    pipe-viewer
 
     # 系統控制工具
     pamixer # 音量控制
