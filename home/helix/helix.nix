@@ -22,8 +22,6 @@
 
     # ── 主設定（editor + keys 必須包在 settings 裡） ──────────────────────────
     settings = {
-      theme = "catppuccin_mocha";
-
       editor = {
         # ── 外觀 ─────────────────────────────────────────────────────────
         line-number = "relative";
