@@ -150,7 +150,6 @@
     wlogout
     librsvg
     rename
-    helix
     imv
     ttygif
     chafa
