@@ -18,9 +18,6 @@
       vscode-langservers-extracted  # HTML / CSS / JSON / ESLint LSP
     ];
 
-    # ── 設定 ─────────────────────────────────────────────────────────────────
-    settings = {
-      theme = "catppuccin_mocha";   # 配合 Stylix
 
       editor = {
         # ── 外觀 ───────────────────────────────────────────────────────────
