@@ -86,7 +86,6 @@
         elfeed # RSS 閱讀器
         pomidor # 番茄鐘
         keycast # 顯示你正在按的鍵（直播用）
-        explain-pause-mode # 找出讓 Emacs 卡住的元兇
 
         # ── 雜項實用 ─────────────────────────────────────────────────────────
         smartparens # 括號自動配對
