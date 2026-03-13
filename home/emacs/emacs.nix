@@ -1,106 +1,108 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   programs.emacs = {
-    enable      = true;
-    package     = pkgs.emacs30-pgtk;   # Wayland 原生，Hyprland 下最順
+    enable = true;
+    package = pkgs.emacs30-pgtk; # Wayland 原生，Hyprland 下最順
 
-    extraPackages = epkgs: with epkgs; [
-      # ── Evil（Vim keybinding 核心） ─────────────────────────────────────────
-      evil
-      evil-collection      # 讓 evil 接管幾乎所有 buffer
-      evil-surround        # cs"' ds( 等操作
-      evil-commentary      # gcc 注解
-      evil-lion            # gl= 對齊
-      evil-exchange        # gx 交換兩段文字
-      evil-args            # cia / daa 操作函式參數
-      general              # leader key 管理
+    extraPackages = epkgs:
+      with epkgs; [
+        # ── Evil（Vim keybinding 核心） ─────────────────────────────────────────
+        evil
+        evil-collection # 讓 evil 接管幾乎所有 buffer
+        evil-surround # cs"' ds( 等操作
+        evil-commentary # gcc 注解
+        evil-lion # gl= 對齊
+        evil-exchange # gx 交換兩段文字
+        evil-args # cia / daa 操作函式參數
+        general # leader key 管理
 
-      # ── UI / 外觀 ────────────────────────────────────────────────────────
-      catppuccin-theme     # 配合 Stylix
-      doom-modeline        # 好看的 modeline
-      nerd-icons           # 圖示（需要 nerd font）
-      nerd-icons-dired
-      nerd-icons-completion
-      dashboard            # 啟動畫面
-      which-key            # 按鍵提示
-      rainbow-delimiters   # 彩虹括號
-      highlight-indent-guides  # 縮排導引
+        # ── UI / 外觀 ────────────────────────────────────────────────────────
+        catppuccin-theme # 配合 Stylix
+        doom-modeline # 好看的 modeline
+        nerd-icons # 圖示（需要 nerd font）
+        nerd-icons-dired
+        nerd-icons-completion
+        dashboard # 啟動畫面
+        which-key # 按鍵提示
+        rainbow-delimiters # 彩虹括號
+        highlight-indent-guides # 縮排導引
 
-      # ── 補全框架 ─────────────────────────────────────────────────────────
-      vertico              # 垂直補全 UI
-      marginalia           # 補全旁注
-      orderless            # 模糊搜尋
-      consult              # 強化搜尋指令（grep / buffer / imenu）
-      embark               # 對補全項目做操作
-      embark-consult
-      corfu                # in-buffer 程式碼補全
-      cape                 # corfu 補全來源擴充
+        # ── 補全框架 ─────────────────────────────────────────────────────────
+        vertico # 垂直補全 UI
+        marginalia # 補全旁注
+        orderless # 模糊搜尋
+        consult # 強化搜尋指令（grep / buffer / imenu）
+        embark # 對補全項目做操作
+        embark-consult
+        corfu # in-buffer 程式碼補全
+        cape # corfu 補全來源擴充
 
-      # ── LSP ──────────────────────────────────────────────────────────────
-      lsp-mode
-      lsp-ui               # 側邊診斷、hover doc
-      consult-lsp          # consult 整合 LSP symbol 搜尋
+        # ── LSP ──────────────────────────────────────────────────────────────
+        lsp-mode
+        lsp-ui # 側邊診斷、hover doc
+        consult-lsp # consult 整合 LSP symbol 搜尋
 
-      # ── 語法 / 語言 ──────────────────────────────────────────────────────
-      nix-mode             # Nix 語法
-      nix-ts-mode          # Nix tree-sitter
-      treesit-auto         # 自動切換 tree-sitter mode
-      yaml-mode
-      markdown-mode
-      fish-mode
+        # ── 語法 / 語言 ──────────────────────────────────────────────────────
+        nix-mode # Nix 語法
+        nix-ts-mode # Nix tree-sitter
+        treesit-auto # 自動切換 tree-sitter mode
+        yaml-mode
+        markdown-mode
+        fish-mode
 
-      # ── Git ──────────────────────────────────────────────────────────────
-      magit                # 最強 git UI
-      magit-delta          # magit diff 用 delta 渲染
-      forge                # GitHub PR / issue 整合
-      diff-hl              # gutter git diff
+        # ── Git ──────────────────────────────────────────────────────────────
+        magit # 最強 git UI
+        magit-delta # magit diff 用 delta 渲染
+        forge # GitHub PR / issue 整合
+        diff-hl # gutter git diff
 
-      # ── 檔案管理 ─────────────────────────────────────────────────────────
-      dirvish              # dired 強化版（封面 / 預覽）
+        # ── 檔案管理 ─────────────────────────────────────────────────────────
+        dirvish # dired 強化版（封面 / 預覽）
 
-      # ── 終端機 ───────────────────────────────────────────────────────────
-      vterm                # 真正的 terminal emulator
-      multi-vterm
+        # ── 終端機 ───────────────────────────────────────────────────────────
+        vterm # 真正的 terminal emulator
+        multi-vterm
 
-      # ── Org mode 瑞士刀 ──────────────────────────────────────────────────
-      org
-      org-modern           # 好看的 org 渲染
-      org-appear           # 游標移過去才顯示 markup
-      org-roam             # 雙向連結筆記
-      org-roam-ui          # org-roam 的 web 視覺化圖
-      org-download         # 拖放圖片進 org
-      org-superstar        # 好看的標題符號
-      toc-org              # 自動產生目錄
-      ox-pandoc            # org 匯出 → 各種格式
+        # ── Org mode 瑞士刀 ──────────────────────────────────────────────────
+        org
+        org-modern # 好看的 org 渲染
+        org-appear # 游標移過去才顯示 markup
+        org-roam # 雙向連結筆記
+        org-roam-ui # org-roam 的 web 視覺化圖
+        org-download # 拖放圖片進 org
+        org-superstar # 好看的標題符號
+        toc-org # 自動產生目錄
+        ox-pandoc # org 匯出 → 各種格式
 
-      # ── 怪怪好玩的東西 ────────────────────────────────────────────────────
+        # ── 怪怪好玩的東西 ────────────────────────────────────────────────────
 
-      eat                  # 另一個快速 terminal（比 vterm 新）
-      nov                  # 讀 epub 電子書
-      elcord               # Discord Rich Presence（開 Emacs 讓朋友看到）
-      speed-type           # Emacs 裡練打字速度
-      zone                 # 發呆螢幕保護（M-x zone）
-      fireplace            # 壁爐動畫（M-x fireplace）
-      snow                 # 下雪動畫（M-x snow）
-      tetris               # 俄羅斯方塊（M-x tetris）
-      2048-game            # 2048（M-x 2048-game）
-      hanoi                # 河內塔動畫（M-x hanoi）
-      matrix-client        # Matrix 聊天室客戶端
-      elfeed               # RSS 閱讀器
-      pomidor              # 番茄鐘
-      keycast              # 顯示你正在按的鍵（直播用）
-      explain-pause-mode   # 找出讓 Emacs 卡住的元兇
+        eat # 另一個快速 terminal（比 vterm 新）
+        nov # 讀 epub 電子書
+        elcord # Discord Rich Presence（開 Emacs 讓朋友看到）
+        speed-type # Emacs 裡練打字速度
+        zone # 發呆螢幕保護（M-x zone）
+        fireplace # 壁爐動畫（M-x fireplace）
+        snow # 下雪動畫（M-x snow）
+        tetris # 俄羅斯方塊（M-x tetris）
+        hanoi # 河內塔動畫（M-x hanoi）
+        matrix-client # Matrix 聊天室客戶端
+        elfeed # RSS 閱讀器
+        pomidor # 番茄鐘
+        keycast # 顯示你正在按的鍵（直播用）
+        explain-pause-mode # 找出讓 Emacs 卡住的元兇
 
-      # ── 雜項實用 ─────────────────────────────────────────────────────────
-      smartparens          # 括號自動配對
-      ws-butler            # 自動清尾部空白
-      undo-tree            # 樹狀 undo 歷史
-      avy                  # 跳轉到任意位置（像 Vim 的 easymotion）
-      ace-window           # 快速切換視窗
-      helpful              # 更好看的 help buffer
-      flycheck             # 即時語法檢查
-    ];
+        # ── 雜項實用 ─────────────────────────────────────────────────────────
+        smartparens # 括號自動配對
+        ws-butler # 自動清尾部空白
+        undo-tree # 樹狀 undo 歷史
+        avy # 跳轉到任意位置（像 Vim 的 easymotion）
+        ace-window # 快速切換視窗
+        helpful # 更好看的 help buffer
+        flycheck # 即時語法檢查
+      ];
 
     extraConfig = ''
       ;; ── 基本設定 ────────────────────────────────────────────────────────────
