@@ -89,7 +89,6 @@
 
         # ── 雜項實用 ─────────────────────────────────────────────────────────
         smartparens # 括號自動配對
-        ws-butler # 自動清尾部空白
         undo-tree # 樹狀 undo 歷史
         avy # 跳轉到任意位置（像 Vim 的 easymotion）
         ace-window # 快速切換視窗

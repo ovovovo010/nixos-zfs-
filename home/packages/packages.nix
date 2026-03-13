@@ -61,6 +61,7 @@
     age
     zbar
     songrec
+    protonvpn-gui
 
     # 桌面與 Wayland 工具
     rofi # 應用啟動器
