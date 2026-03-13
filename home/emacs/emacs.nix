@@ -83,7 +83,6 @@
         nov # 讀 epub 電子書
         elcord # Discord Rich Presence（開 Emacs 讓朋友看到）
         speed-type # Emacs 裡練打字速度
-        zone # 發呆螢幕保護（M-x zone）
         fireplace # 壁爐動畫（M-x fireplace）
         snow # 下雪動畫（M-x snow）
         tetris # 俄羅斯方塊（M-x tetris）
