@@ -57,7 +57,7 @@
           home-manager.sharedModules = [
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
-            inputs.catppuccin.homeModules.catppuccin
+            inputs.catppuccin.homeManagerModules.catppuccin
           ];
         }
       ];
