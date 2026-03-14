@@ -21,6 +21,10 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko"; # ← 刪掉這行
+      disko.inputs.nixpkgs.follows = "nixpkgs"; # ← 還有這行
+    };
   };
 
   outputs = {
