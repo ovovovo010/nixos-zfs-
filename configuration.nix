@@ -29,7 +29,6 @@
     ./system/seatd/seatd.nix
     ./system/wayland/wayland.nix
     ./system/obs/obs.nix
-    ./system/zfs/zfs.nix
     ./system/zram/zram.nix
     ./system/lact/lact.nix
     ./system/ssh/ssh.nix

@@ -37,10 +37,6 @@
     # seatd / multi-seat 支援
     seatd
 
-    # ZFS 工具
-    zfs
-    zfstools
-
     # 登入 shell（確保在全域可用）
     nushell
     fish

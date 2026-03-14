@@ -13,41 +13,10 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["zfs"];
-  boot.kernelModules = ["kvm-intel"];
+  boot.initrd.kernelModules = ["nvidia"];
+  boot.initrd.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "rpool/root";
-    fsType = "zfs";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DDA7-8F6B";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
-
-  fileSystems."/nix" = {
-    device = "rpool/nix";
-    fsType = "zfs";
-  };
-
-  fileSystems."/home" = {
-    device = "rpool/home";
-    fsType = "zfs";
-  };
-
-  fileSystems."/var" = {
-    device = "rpool/var";
-    fsType = "zfs";
-  };
-
-  swapDevices = [];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  boot.supportedFilesystems = ["zfs"];
-  boot.zfs.forceImportRoot = false;
-  networking.hostId = "29bcbbe0";
 }
