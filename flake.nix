@@ -21,10 +21,6 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -33,7 +29,6 @@
     home-manager,
     nix-flatpak,
     nixvim,
-    disko,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -41,8 +36,6 @@
       modules = [
         {nixpkgs.hostPlatform = "x86_64-linux";}
         ./configuration.nix
-        disko.nixosModules.disko
-        ./disko.nix
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         {
