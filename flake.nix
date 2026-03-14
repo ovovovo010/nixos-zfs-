@@ -22,8 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
-      url = "github:nix-community/disko"; # ← 刪掉這行
-      inputs.nixpkgs.follows = "nixpkgs"; # ← 還有這行
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -40,8 +44,9 @@
       modules = [
         {nixpkgs.hostPlatform = "x86_64-linux";}
         ./configuration.nix
-        inputs.disko.nixosModules.disko # ← 加這行
+        inputs.disko.nixosModules.disko
         ./disko.nix
+        inputs.catppuccin.nixosModules.catppuccin
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         {
@@ -52,6 +57,7 @@
           home-manager.sharedModules = [
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
+            inputs.catppuccin.homeModules.catppuccin
           ];
         }
       ];
