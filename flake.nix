@@ -25,10 +25,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin = {
-      url = "github:catppuccin/nix/v1.0.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -46,7 +42,6 @@
         ./configuration.nix
         inputs.disko.nixosModules.disko
         ./disko.nix
-        inputs.catppuccin.nixosModules.catppuccin
         nix-flatpak.nixosModules.nix-flatpak
         home-manager.nixosModules.home-manager
         {
@@ -57,7 +52,6 @@
           home-manager.sharedModules = [
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
-            inputs.catppuccin.homeManagerModules.catppuccin
           ];
         }
       ];
