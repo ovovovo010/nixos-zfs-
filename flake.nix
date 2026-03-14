@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {
-      url = "github:catppuccin/nix";
+      url = "github:catppuccin/nix/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
