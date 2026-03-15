@@ -8,13 +8,12 @@
     enable = true;
 
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders.override {
+      name = lib.mkForce "Papirus-Dark";
+      package = lib.mkForce (pkgs.catppuccin-papirus-folders.override {
         accent = "lavender";
         flavor = "mocha";
-      };
+      });
     };
-
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
       gtk-xft-antialias = 1;
