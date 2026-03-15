@@ -198,6 +198,7 @@
       alias gl   = git log --oneline --graph
       alias gs   = git status
       alias lg   = lazygit
+      alias ng   = /home/eric/nixos/rebuild.sh
 
       def mkcd [dir: string] {
         mkdir $dir
