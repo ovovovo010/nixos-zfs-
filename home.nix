@@ -9,6 +9,7 @@
     ./home/hypragent/hypragent.nix
     ./home/noctalia/noctalia-shell.nix
     ./home/antigravity/antigravity.nix
+    ./home/simple-wallpaper-engine/simple-wallpaper-engine.nix
     ./home/fonts/fonts.nix
     ./home/steam/steam.nix
     ./home/nushell/nushell.nix

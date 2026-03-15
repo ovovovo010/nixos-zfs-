@@ -39,6 +39,13 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    simple-wallpaper-engine = {
+      url = "github:Maxnights/simple-linux-wallpaperengine-gui";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
   outputs = {
@@ -67,6 +74,7 @@
             inputs.spicetify-nix.homeManagerModules.default
             nixvim.homeModules.nixvim
             inputs.noctalia.homeModules.default
+            inputs.simple-wallpaper-engine.homeManagerModules.default
           ];
         }
       ];
