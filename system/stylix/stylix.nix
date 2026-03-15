@@ -26,8 +26,8 @@
       };
     };
     cursor = {
-      name = "catppuccin-mocha-lavender-cursors"; # 确保小写
-      package = pkgs.catppuccin-cursors.mochaLavender;
+      name = "catppuccin-macchiato-pink-cursors"; # 確保小寫
+      package = pkgs.catppuccin-cursors.macchiatoPink;
       size = 24;
     };
   };

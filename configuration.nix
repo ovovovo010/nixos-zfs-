@@ -12,6 +12,7 @@
     ./system/btrfs/btrfs.nix
     ./system/boot/boot.nix
     ./system/networking/networking.nix
+    ./system/sudo/sudo.nix
     ./system/locale/locale.nix
     ./system/audio/audio.nix
     ./system/driver/driver.nix
