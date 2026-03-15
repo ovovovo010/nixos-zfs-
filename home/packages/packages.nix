@@ -21,6 +21,7 @@
     duf
     curlie
     dogdns
+    google-chrome
     linux-wallpaperengine
     bandwhich
     antigravity-fhs
