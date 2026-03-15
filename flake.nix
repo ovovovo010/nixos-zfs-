@@ -41,10 +41,7 @@
     };
     simple-wallpaper-engine = {
       url = "github:Maxnights/simple-linux-wallpaperengine-gui";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
