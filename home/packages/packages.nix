@@ -20,7 +20,6 @@
     dust
     duf
     curlie
-    dogdn
     brave
     linux-wallpaperengine
     bandwhich
