@@ -24,6 +24,7 @@
     bandwhich
     tokei
     nix-output-monitor
+    mpvpaper
     nvd
     aide
     spotdl
@@ -68,7 +69,6 @@
 
     # 桌面與 Wayland 工具
     kitty
-    swww
     wl-clipboard
     hyprshot
     yazi

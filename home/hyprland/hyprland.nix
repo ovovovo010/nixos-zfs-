@@ -20,10 +20,9 @@
       # AUTOSTART
       "exec-once" = [
         "fcitx5 -d"
-        "swww-daemon"
         "noctalia-shell"
-        "swww img /etc/nixos/root/wallpaper.png"
         "hyprctl setcursor catppuccin-mocha-lavender-cursors 24"
+        "mpvpaper -f -o 'loop volume=30' '*' /home/eric/Pictures/Wallpapers/live/Mika_(swimsuit).mp4"
       ];
 
       # WINDOWRULE
