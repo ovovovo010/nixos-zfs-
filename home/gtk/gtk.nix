@@ -7,6 +7,14 @@
   gtk = {
     enable = true;
 
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+        accent = "lavender";
+        flavor = "mocha";
+      };
+    };
+
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
       gtk-xft-antialias = 1;
@@ -29,10 +37,10 @@
       "text/x-nix" = "nvim.desktop";
 
       # 瀏覽器
-      "text/html" = "firefox.desktop";
-      "application/xhtml+xml" = "firefox.desktop";
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
+      "text/html" = "zen-beta.desktop";
+      "application/xhtml+xml" = "zen-beta.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
     };
   };
 

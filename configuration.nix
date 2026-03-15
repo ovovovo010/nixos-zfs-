@@ -5,8 +5,9 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./system/hardware/hardware-configuration.nix
     ./system/fcitx5/fcitx5.nix
+    ./system/btrfs/btrfs.nix
     ./system/boot/boot.nix
     ./system/networking/networking.nix
     ./system/locale/locale.nix

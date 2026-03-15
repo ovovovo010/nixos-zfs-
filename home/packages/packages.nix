@@ -67,12 +67,9 @@
     protonvpn-gui
 
     # 桌面與 Wayland 工具
-    rofi # 應用啟動器
     kitty
-    waybar
     swww
     wl-clipboard
-    mako
     hyprshot
     yazi
     nnn
@@ -151,7 +148,6 @@
 
     # 額外工具與 GUI / WM
     lact
-    wlogout
     librsvg
     rename
     imv
