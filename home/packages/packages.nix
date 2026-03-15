@@ -25,6 +25,7 @@
     bandwhich
     antigravity-fhs
     tokei
+    nixfmt-rfc-style
     nix-output-monitor
     mpvpaper
     nvd
