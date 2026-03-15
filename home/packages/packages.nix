@@ -20,8 +20,8 @@
     dust
     duf
     curlie
-    dogdns
-    google-chrome
+    dogdn
+    brave
     linux-wallpaperengine
     bandwhich
     antigravity-fhs
