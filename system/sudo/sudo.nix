@@ -1,20 +1,13 @@
 {...}: {
-  security.sudo = {
-    enable = true;
-    extraRules = [
-      {
-        users = ["eric"];
-        commands = [
-          {
-            command = "/run/current-system/sw/bin/nh";
-            options = ["NOPASSWD"];
-          }
-          {
-            command = "/run/current-system/sw/bin/nixos-rebuild";
-            options = ["NOPASSWD"];
-          }
-        ];
-      }
-    ];
-  };
+  security.sudo.extraRules = [
+    {
+      users = ["eric"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
 }
