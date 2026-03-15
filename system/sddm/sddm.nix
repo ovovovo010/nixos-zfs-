@@ -17,7 +17,7 @@
       flavor = "mocha";
       font = "JetBrainsMono Nerd Font";
       fontSize = "12";
-      background = ../wallpaper.png;
+      background = ./2026-03-15-150056_hyprshot.png;
       loginBackground = true;
     })
     bibata-cursors

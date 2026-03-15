@@ -16,7 +16,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
-    image = ../wallpaper.png;
+    image = ./2026-03-15-150056_hyprshot.png;
 
     fonts = {
       monospace = {
